@@ -59,8 +59,8 @@ public class ActionGetAsVar extends AbstractTaskAction {
             }
             defer.then(new Job() {
                 public void run() {
-                    //optimization to avoid iterating again on previous result set
-                    taskContext.defineVariable(taskContext.template(_name),finalResult);
+                    taskContext.defineVariable(taskContext.template(_variable),finalResult);
+
                     taskContext.continueTask();
                 }
             });
