@@ -41,7 +41,6 @@ public class ActionGetAsVar extends AbstractTaskAction {
                                         finalResult.add(result[j]);
                                     }
                                 }
-                                casted.free();
                                 defer.count();
                             }
                         });
@@ -50,7 +49,6 @@ public class ActionGetAsVar extends AbstractTaskAction {
                         if (resolved != null) {
                             finalResult.add(resolved);
                         }
-                        casted.free();
                         defer.count();
                     }
                 } else {
