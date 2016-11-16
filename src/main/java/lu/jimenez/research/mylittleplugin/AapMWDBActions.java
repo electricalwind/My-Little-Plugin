@@ -1,7 +1,7 @@
-package lu.jimenez.research.aapmwdb;
+package lu.jimenez.research.mylittleplugin;
 
-import lu.jimenez.research.aapmwdb.actions.ActionIfEmptyThen;
-import lu.jimenez.research.aapmwdb.actions.ActionIfNotEmptyThen;
+import lu.jimenez.research.mylittleplugin.actions.ActionIfEmptyThen;
+import lu.jimenez.research.mylittleplugin.actions.ActionIfNotEmptyThen;
 import org.mwg.task.Action;
 import org.mwg.task.Task;
 import org.mwg.task.TaskContext;

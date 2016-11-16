@@ -1,4 +1,4 @@
-package lu.jimenez.research.aapmwdb.actions;
+package lu.jimenez.research.mylittleplugin.actions;
 
 import org.mwg.plugin.AbstractTaskAction;
 import org.mwg.task.TaskContext;

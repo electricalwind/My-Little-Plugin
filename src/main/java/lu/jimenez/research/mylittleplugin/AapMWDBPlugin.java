@@ -1,7 +1,7 @@
-package lu.jimenez.research.aapmwdb;
+package lu.jimenez.research.mylittleplugin;
 
-import lu.jimenez.research.aapmwdb.actions.ActionCount;
-import lu.jimenez.research.aapmwdb.actions.ActionGetAsVar;
+import lu.jimenez.research.mylittleplugin.actions.ActionCount;
+import lu.jimenez.research.mylittleplugin.actions.ActionGetAsVar;
 import org.mwg.plugin.AbstractPlugin;
 import org.mwg.task.TaskAction;
 import org.mwg.task.TaskActionFactory;
