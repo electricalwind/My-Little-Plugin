@@ -13,6 +13,6 @@ Actions are:
 * Get Or Create
 * If empty then
 * If not empty then
-* Inject as var
+* Inject as Global var
 * Increment
 * Keep first result

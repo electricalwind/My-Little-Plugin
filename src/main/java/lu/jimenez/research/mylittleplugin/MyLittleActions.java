@@ -2,7 +2,7 @@ package lu.jimenez.research.mylittleplugin;
 
 import lu.jimenez.research.mylittleplugin.actions.ActionIfEmptyThen;
 import lu.jimenez.research.mylittleplugin.actions.ActionIfNotEmptyThen;
-import lu.jimenez.research.mylittleplugin.actions.ActionInjectAsVar;
+import lu.jimenez.research.mylittleplugin.actions.ActionInjectAsGlobalVar;
 import org.mwg.task.Action;
 import org.mwg.task.Task;
 import org.mwg.task.TaskContext;
@@ -56,10 +56,10 @@ public class MyLittleActions {
         });
     }
 
-    public static Task injectAsVar(final String p_variable, final Object obj){
+    public static Task injectAsGlobalVar(final String p_variable, final Object obj) {
         return newTask().then(new Action() {
             public void eval(TaskContext taskContext) {
-                new ActionInjectAsVar(p_variable,obj);
+                new ActionInjectAsGlobalVar(p_variable, obj);
             }
         });
     }
@@ -68,8 +68,8 @@ public class MyLittleActions {
         return newTask().action(INCREMENT, p_variable + "," + p_incrementValue);
     }
 
-    public static Task keepFirstResult(){
-        return newTask().action(KEEP_FIRST_RESULT,"");
+    public static Task keepFirstResult() {
+        return newTask().action(KEEP_FIRST_RESULT, "");
     }
 
 }
