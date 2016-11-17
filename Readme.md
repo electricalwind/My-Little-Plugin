@@ -13,5 +13,6 @@ Actions are:
 * Get Or Create
 * If empty then
 * If not empty then
+* Inject as var
 * Increment
 * Keep first result
