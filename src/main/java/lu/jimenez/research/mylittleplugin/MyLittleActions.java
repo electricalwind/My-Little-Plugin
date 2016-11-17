@@ -18,6 +18,8 @@ public class MyLittleActions {
 
     public static final String GET_AS_VAR = "getAsVar";
 
+    public static final String GET_OR_CREATE = "getOrCreate";
+
     public static Task count() {
         return newTask().action(COUNT, "");
     }
@@ -40,6 +42,10 @@ public class MyLittleActions {
 
     public static Task getAsVar(String p_name, String p_variable) {
         return newTask().action(GET_AS_VAR, p_name + "," + p_variable);
+    }
+
+    public static Task getOrCreate(String p_property, byte p_propertyType){
+        return newTask().action(GET_OR_CREATE,p_property + ","+ p_propertyType);
     }
 
 }

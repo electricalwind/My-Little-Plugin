@@ -9,6 +9,7 @@ This project is a plugin bringing additional actions to the MWDB [http://mwdb.ke
 Actions are: 
 
 * Get As Var
+* Get Or Create
 * If empty then
 * If not empty then
 * count
