@@ -8,7 +8,7 @@ import org.mwg.task.TaskContext;
 
 import static org.mwg.task.Actions.newTask;
 
-public class AapMWDBActions {
+public class MyLittleActions {
 
     public static final String COUNT = "count";
 
