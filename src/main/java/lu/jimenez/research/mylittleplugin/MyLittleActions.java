@@ -12,13 +12,16 @@ public class MyLittleActions {
 
     public static final String COUNT = "count";
 
+    public static final String GET_AS_VAR = "getAsVar";
+
+    public static final String GET_OR_CREATE = "getOrCreate";
+
     public static final String IF_EMPTY_THEN = "ifEmptyThen";
 
     public static final String IF_NOT_EMPTY_THEN = "ifNotEmptyThen";
 
-    public static final String GET_AS_VAR = "getAsVar";
+    public static final String INCREMENT = "increment";
 
-    public static final String GET_OR_CREATE = "getOrCreate";
 
     public static Task count() {
         return newTask().action(COUNT, "");
@@ -46,6 +49,10 @@ public class MyLittleActions {
 
     public static Task getOrCreate(String p_property, byte p_propertyType){
         return newTask().action(GET_OR_CREATE,p_property + ","+ p_propertyType);
+    }
+
+    public static Task getOrCreate(String p_variable, int p_incrementValue){
+        return newTask().action(INCREMENT,p_variable + ","+ p_incrementValue);
     }
 
 }

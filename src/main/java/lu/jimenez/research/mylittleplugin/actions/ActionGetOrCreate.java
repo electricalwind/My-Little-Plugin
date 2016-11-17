@@ -15,6 +15,7 @@ public class ActionGetOrCreate extends AbstractTaskAction {
     private final String _property;
     private final byte _propertyType;
     public ActionGetOrCreate(String p_property, String p_propertyType){
+        super();
         _property = p_property;
         _propertyType = Byte.decode(p_propertyType);
     }
