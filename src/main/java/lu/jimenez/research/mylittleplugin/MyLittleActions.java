@@ -6,7 +6,6 @@ import lu.jimenez.research.mylittleplugin.actions.ActionInjectAsGlobalVar;
 import org.mwg.task.Action;
 import org.mwg.task.Task;
 import org.mwg.task.TaskContext;
-import org.omg.CORBA.Object;
 
 import static org.mwg.task.Actions.newTask;
 
