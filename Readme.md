@@ -8,16 +8,10 @@ This project is a plugin bringing additional actions to the MWDB [http://mwdb.ke
 
 Actions are: 
 
+* Count
 * Get As Var
 * Get Or Create
 * If empty then
 * If not empty then
-* count
-    
-
-### Get As Var
-
-
-### If empty/not empty then
-
-### Count
+* Increment
+* Keep first result

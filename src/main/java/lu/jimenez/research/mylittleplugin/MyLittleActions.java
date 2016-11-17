@@ -22,9 +22,20 @@ public class MyLittleActions {
 
     public static final String INCREMENT = "increment";
 
+    public static final String KEEP_FIRST_RESULT = "keepFirst";
+
 
     public static Task count() {
         return newTask().action(COUNT, "");
+    }
+
+
+    public static Task getAsVar(String p_name, String p_variable) {
+        return newTask().action(GET_AS_VAR, p_name + "," + p_variable);
+    }
+
+    public static Task getOrCreate(String p_property, byte p_propertyType) {
+        return newTask().action(GET_OR_CREATE, p_property + "," + p_propertyType);
     }
 
     public static Task ifEmptyThen(final Task then) {
@@ -43,16 +54,12 @@ public class MyLittleActions {
         });
     }
 
-    public static Task getAsVar(String p_name, String p_variable) {
-        return newTask().action(GET_AS_VAR, p_name + "," + p_variable);
+    public static Task increment(String p_variable, int p_incrementValue) {
+        return newTask().action(INCREMENT, p_variable + "," + p_incrementValue);
     }
 
-    public static Task getOrCreate(String p_property, byte p_propertyType){
-        return newTask().action(GET_OR_CREATE,p_property + ","+ p_propertyType);
-    }
-
-    public static Task getOrCreate(String p_variable, int p_incrementValue){
-        return newTask().action(INCREMENT,p_variable + ","+ p_incrementValue);
+    public static Task keepFirstResult(){
+        return newTask().action(KEEP_FIRST_RESULT,"");
     }
 
 }

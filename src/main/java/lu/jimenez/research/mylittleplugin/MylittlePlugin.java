@@ -1,9 +1,6 @@
 package lu.jimenez.research.mylittleplugin;
 
-import lu.jimenez.research.mylittleplugin.actions.ActionCount;
-import lu.jimenez.research.mylittleplugin.actions.ActionGetAsVar;
-import lu.jimenez.research.mylittleplugin.actions.ActionGetOrCreate;
-import lu.jimenez.research.mylittleplugin.actions.ActionIncrement;
+import lu.jimenez.research.mylittleplugin.actions.*;
 import org.mwg.plugin.AbstractPlugin;
 import org.mwg.task.TaskAction;
 import org.mwg.task.TaskActionFactory;
@@ -44,5 +41,12 @@ public class MylittlePlugin extends AbstractPlugin {
                 return new ActionIncrement(strings[0], strings[1]);
             }
         });
+
+        declareTaskAction(MyLittleActions.KEEP_FIRST_RESULT, new TaskActionFactory() {
+            public TaskAction create(String[] strings) {
+                return new ActionKeepFirstResult();
+            }
+        });
+
     }
 }
