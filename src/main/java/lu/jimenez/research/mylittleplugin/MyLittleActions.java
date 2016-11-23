@@ -20,19 +20,15 @@ public class MyLittleActions {
     }
 
     public static Action ifEmptyThen(final Task then) {
-
         return new ActionIfEmptyThen(then);
     }
 
     public static Action ifNotEmptyThen(final Task then) {
-
         return new ActionIfNotEmptyThen(then);
-
     }
 
     public static Action injectAsGlobalVar(final String p_variable, final Object obj) {
-
-        return new ActionInjectAsGlobalVar(p_variable, obj);
+        return new ActionInjectAsVar(p_variable, obj);
     }
 
     public static Action increment(String p_variable, int p_incrementValue) {
