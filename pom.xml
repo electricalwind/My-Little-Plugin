@@ -12,16 +12,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mwg.version>7</mwg.version>
+        <mwg.version>11-SNAPSHOT</mwg.version>
     </properties>
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.kevoree.mwg</groupId>
-            <artifactId>api</artifactId>
-            <version>${mwg.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.kevoree.mwg</groupId>
             <artifactId>core</artifactId>

@@ -1,11 +1,11 @@
-package lu.jimenez.research.mylittleplugin.actions;
+package lu.jimenez.research.mylittleplugin;
 
-import org.mwg.plugin.AbstractTaskAction;
+import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 
-public class ActionCount extends AbstractTaskAction{
+public class ActionCount implements Action {
 
-    public ActionCount(){
+    ActionCount(){
         super();
     }
 

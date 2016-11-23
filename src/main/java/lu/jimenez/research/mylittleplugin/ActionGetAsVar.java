@@ -1,21 +1,21 @@
-package lu.jimenez.research.mylittleplugin.actions;
+package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.Callback;
 import org.mwg.DeferCounter;
 import org.mwg.Node;
 import org.mwg.Type;
-import org.mwg.plugin.AbstractNode;
-import org.mwg.plugin.AbstractTaskAction;
+import org.mwg.base.BaseNode;
 import org.mwg.plugin.Job;
+import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 import org.mwg.task.TaskResult;
 
-public class ActionGetAsVar extends AbstractTaskAction {
+public class ActionGetAsVar implements Action {
 
     private final String _name;
     private final String _variable;
 
-    public ActionGetAsVar(final String p_name, final String p_variable) {
+    ActionGetAsVar(final String p_name, final String p_variable) {
         super();
         this._name = p_name;
         this._variable = p_variable;
@@ -30,10 +30,10 @@ public class ActionGetAsVar extends AbstractTaskAction {
             final DeferCounter defer = taskContext.graph().newCounter(previousSize);
             for (int i = 0; i < previousSize; i++) {
                 final Object loop = previousResult.get(i);
-                if (loop instanceof AbstractNode) {
+                if (loop instanceof BaseNode) {
                     final Node casted = (Node) loop;
                     if (casted.type(flatName) == Type.RELATION) {
-                        casted.rel(flatName, new Callback<Node[]>() {
+                        casted.relation(flatName, new Callback<Node[]>() {
 
                             public void on(Node[] result) {
                                 if (result != null) {

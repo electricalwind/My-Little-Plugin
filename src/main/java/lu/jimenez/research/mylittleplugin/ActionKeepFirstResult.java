@@ -1,10 +1,10 @@
-package lu.jimenez.research.mylittleplugin.actions;
+package lu.jimenez.research.mylittleplugin;
 
-import org.mwg.plugin.AbstractTaskAction;
+import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 
-public class ActionKeepFirstResult extends AbstractTaskAction {
-    public ActionKeepFirstResult() {
+public class ActionKeepFirstResult implements Action {
+    ActionKeepFirstResult() {
         super();
     }
 

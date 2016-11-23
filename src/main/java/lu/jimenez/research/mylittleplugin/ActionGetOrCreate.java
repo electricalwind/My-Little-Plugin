@@ -1,23 +1,24 @@
-package lu.jimenez.research.mylittleplugin.actions;
+package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.Callback;
 import org.mwg.DeferCounter;
 import org.mwg.Node;
 import org.mwg.Type;
-import org.mwg.plugin.AbstractNode;
-import org.mwg.plugin.AbstractTaskAction;
+import org.mwg.base.BaseNode;
 import org.mwg.plugin.Job;
+import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 import org.mwg.task.TaskResult;
 
-public class ActionGetOrCreate extends AbstractTaskAction {
+public class ActionGetOrCreate implements Action {
 
     private final String _property;
     private final byte _propertyType;
-    public ActionGetOrCreate(String p_property, String p_propertyType){
+
+    ActionGetOrCreate(String p_property, byte p_propertyType) {
         super();
         _property = p_property;
-        _propertyType = Byte.decode(p_propertyType);
+        _propertyType = p_propertyType;
     }
 
     public void eval(final TaskContext context) {
@@ -29,35 +30,34 @@ public class ActionGetOrCreate extends AbstractTaskAction {
             final DeferCounter defer = context.graph().newCounter(previousSize);
             for (int i = 0; i < previousSize; i++) {
                 final Object loop = previousResult.get(i);
-                if (loop instanceof AbstractNode) {
+                if (loop instanceof BaseNode) {
                     final Node casted = (Node) loop;
 
-                    if(_propertyType == Type.RELATION){
-                            casted.rel(flatName, new Callback<Node[]>() {
-                                public void on(Node[] result) {
-                                    if (result != null) {
-                                        for (int j = 0; j < result.length; j++) {
-                                            finalResult.add(result[j]);
-                                        }
-                                    }else{
-                                        casted.getOrCreateRel(_property);
+                    if (_propertyType == Type.RELATION) {
+                        casted.relation(flatName, new Callback<Node[]>() {
+                            public void on(Node[] result) {
+                                if (result != null) {
+                                    for (int j = 0; j < result.length; j++) {
+                                        finalResult.add(result[j]);
                                     }
-                                    casted.free();
-                                    defer.count();
+                                } else {
+                                    casted.getOrCreate(_property, Type.RELATION);
                                 }
-                            });
-                        }
-                        else{
+                                casted.free();
+                                defer.count();
+                            }
+                        });
+                    } else {
                         Object resolved = casted.get(flatName);
                         if (resolved != null) {
                             finalResult.add(resolved);
-                        }else{
-                            finalResult.add(casted.getOrCreate(_property,_propertyType));
+                        } else {
+                            finalResult.add(casted.getOrCreate(_property, _propertyType));
                         }
                         casted.free();
                         defer.count();
 
-                        }
+                    }
                 } else {
                     //TODO add closable management
                     finalResult.add(loop);
