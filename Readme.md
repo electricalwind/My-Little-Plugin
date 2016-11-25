@@ -31,7 +31,7 @@ This library aims at providing such actions and will evolves alongside MWDB, i.e
 Currently offered actions are: 
 
 * [Count](doc/Count.md)
-* [Get As Var](doc/StoreGetAsVar.md)
+* [Store get as var](doc/StoreGetAsVar.md)
 * [If empty then](doc/IfEmptyThen.md)
 * [If not empty then](doc/IfNotEmptyThen.md)
 * [Inject as Var](doc/InjectAsVar.md)

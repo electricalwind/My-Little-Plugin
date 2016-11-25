@@ -108,6 +108,6 @@ public class ActionStoreGetInVar implements Action {
 
     @Override
     public String toString() {
-        return "getAsVar " + _name + " " + _variable;
+        return "StoreGetAsVar " + _name + " " + _variable;
     }
 }

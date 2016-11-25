@@ -13,4 +13,9 @@ public class ActionKeepFirstResult implements Action {
             taskContext.continueWith(taskContext.wrap(taskContext.result().get(0)));
         else taskContext.continueTask();
     }
+
+    @Override
+    public String toString(){
+        return "keepFirstResult()";
+    }
 }

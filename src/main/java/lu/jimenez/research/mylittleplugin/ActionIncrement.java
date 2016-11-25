@@ -19,4 +19,9 @@ public class ActionIncrement implements Action {
         taskContext.setVariable(_variable, currentValue + _increment);
         taskContext.continueTask();
     }
+
+    @Override
+    public String toString(){
+        return "incrementing var "+_variable+" by "+_increment;
+    }
 }

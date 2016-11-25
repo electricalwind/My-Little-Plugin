@@ -18,4 +18,9 @@ public class ActionInjectAsVar implements Action {
         taskContext.defineVariable(_variable,_toInject);
         taskContext.continueTask();
     }
+
+    @Override
+    public String toString(){
+        return "injecting "+_toInject.toString()+" in var "+_variable;
+    }
 }

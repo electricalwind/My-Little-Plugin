@@ -16,6 +16,6 @@ public class ActionCount implements Action {
 
     @Override
     public String toString(){
-        return "count";
+        return "count()";
     }
 }
