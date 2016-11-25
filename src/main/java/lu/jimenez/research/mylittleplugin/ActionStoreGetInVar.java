@@ -48,9 +48,9 @@ public class ActionStoreGetInVar implements Action {
                             });
                             break;
                         case Type.RELATION_INDEXED:
-                            RelationIndexed relationIndexed = (RelationIndexed) casted.get(flatName);
-                            if (relationIndexed != null) {
-                                if (_params != null && _params.length > 0) {
+                            if (_params != null && _params.length > 0) {
+                                RelationIndexed relationIndexed = (RelationIndexed) casted.get(flatName);
+                                if (relationIndexed != null) {
                                     Query query = taskContext.graph().newQuery();
                                     String previous = null;
                                     for (int k = 0; k < _params.length; k++) {
@@ -75,21 +75,19 @@ public class ActionStoreGetInVar implements Action {
                                         }
                                     });
                                 } else {
-                                    casted.graph().lookupAll(taskContext.world(), taskContext.time(), relationIndexed.all(), new Callback<Node[]>() {
-                                        public void on(Node[] result) {
-                                            if (result != null) {
-                                                for (int j = 0; j < result.length; j++) {
-                                                    if (result[j] != null) {
-                                                        finalResult.add(result[j]);
-                                                    }
-                                                }
-                                            }
-                                            defer.count();
-                                        }
-                                    });
+                                    defer.count();
                                 }
                             } else {
-                                defer.count();
+                                casted.relation(flatName, new Callback<Node[]>() {
+                                    public void on(Node[] result) {
+                                        if (result != null) {
+                                            for (int j = 0; j < result.length; j++) {
+                                                finalResult.add(result[j]);
+                                            }
+                                        }
+                                        defer.count();
+                                    }
+                                });
                             }
                             break;
                         default:
