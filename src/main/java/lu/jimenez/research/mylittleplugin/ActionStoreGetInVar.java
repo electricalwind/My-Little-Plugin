@@ -34,19 +34,6 @@ public class ActionStoreGetInVar implements Action {
                     final Node casted = (Node) loop;
 
                     switch (casted.type(flatName)) {
-                        case Type.RELATION:
-                            casted.relation(flatName, new Callback<Node[]>() {
-
-                                public void on(Node[] result) {
-                                    if (result != null) {
-                                        for (int j = 0; j < result.length; j++) {
-                                            finalResult.add(result[j]);
-                                        }
-                                    }
-                                    defer.count();
-                                }
-                            });
-                            break;
                         case Type.RELATION_INDEXED:
                             if (_params != null && _params.length > 0) {
                                 RelationIndexed relationIndexed = (RelationIndexed) casted.get(flatName);
@@ -77,8 +64,11 @@ public class ActionStoreGetInVar implements Action {
                                 } else {
                                     defer.count();
                                 }
-                            } else {
+                            }
+                        case Type.RELATION:
+                            if (_params == null || _params.length == 0) {
                                 casted.relation(flatName, new Callback<Node[]>() {
+
                                     public void on(Node[] result) {
                                         if (result != null) {
                                             for (int j = 0; j < result.length; j++) {
