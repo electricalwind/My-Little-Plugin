@@ -4,6 +4,8 @@
 
 <img src="doc/logo.jpg" width="200px" /><img src="doc/4.png" width="150px"/><img src="doc/logo.png" width="250px" />
 
+![MWDB-version](https://img.shields.io/badge/MWDB--version-11--SNAPSHOT-green.svg)
+
 This library bring additional actions to the [MWDB](https://github.com/kevoree-modeling/mwDB) project. This library is compatible with the latest MWDB api, that will be introduced in the 11th version. 
 Compatibility with previous versions of MWDB api is not supported anymore.
 
