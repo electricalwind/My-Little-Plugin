@@ -10,8 +10,8 @@ public class MyLittleActions {
         return new ActionCount();
     }
 
-    public static Action storeGetAsVAr(String p_name, String p_variable,String... p_params) {
-        return new ActionStoreGetInVar(p_name, p_variable,p_params);
+    public static Action storeGetAsVAr(String p_name, String p_variable, String... p_params) {
+        return new ActionStoreGetInVar(p_name, p_variable, p_params);
     }
 
     public static Action ifEmptyThen(final Task then) {
@@ -22,7 +22,7 @@ public class MyLittleActions {
         return new ActionIfNotEmptyThen(then);
     }
 
-    public static Action injectAsGlobalVar(final String p_variable, final Object obj) {
+    public static Action injectAsVar(final String p_variable, final Object obj) {
         return new ActionInjectAsVar(p_variable, obj);
     }
 

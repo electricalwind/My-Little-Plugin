@@ -18,7 +18,7 @@ public class ActionIfNotEmptyThen implements Action {
 
 
     public void eval(final TaskContext taskContext) {
-        if (taskContext.result().size() == 0) {
+        if (taskContext.result().size() != 0) {
             _action.executeFrom(taskContext, taskContext.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
                 public void on(TaskResult res) {
                     taskContext.continueWith(res);
