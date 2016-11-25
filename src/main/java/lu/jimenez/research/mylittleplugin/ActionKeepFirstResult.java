@@ -9,6 +9,8 @@ public class ActionKeepFirstResult implements Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        taskContext.continueWith(taskContext.wrap(taskContext.result().get(0)));
+        if (taskContext.result().size() > 0)
+            taskContext.continueWith(taskContext.wrap(taskContext.result().get(0)));
+        else taskContext.continueTask();
     }
 }

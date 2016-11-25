@@ -2,7 +2,7 @@
 
 ## For Many World Graph Database 
 
-<img src="doc/logo.jpg" width="200px" /><img src="doc/4.png" width="150px"/><img src="doc/logo.png" width="250px" />
+<img src="doc/img/logo.jpg" width="200px" /><img src="doc/img/4.png" width="150px"/><img src="doc/img/logo.png" width="250px" />
 
 ![MWDB-version](https://img.shields.io/badge/MWDB--version-11--SNAPSHOT-green.svg)
 
@@ -31,8 +31,7 @@ This library aims at providing such actions and will evolves alongside MWDB, i.e
 Currently offered actions are: 
 
 * [Count](doc/Count.md)
-* [Get As Var](doc/GetAsVar.md)
-* [Get Or Create](doc/GetAsVar.md)
+* [Get As Var](doc/StoreGetAsVar.md)
 * [If empty then](doc/IfEmptyThen.md)
 * [If not empty then](doc/IfNotEmptyThen.md)
 * [Inject as Var](doc/InjectAsVar.md)
@@ -57,13 +56,13 @@ A jar version might be released in the future.
 
 To use actions in your project import statically the actions you are interested in, in  myLittleActions file.
 
-```java
+``` java
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.*;
 ```
 
 Then you can call them when you want within a task :
 
-```java
+``` java
         task()
                 .then(readGlobalIndexAll("nodes"))
                 .then(get("children"))
