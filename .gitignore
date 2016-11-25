@@ -61,5 +61,5 @@ target/
 hs_err_pid*
 
 src/main/resources/
-src/test/
+
 .idea/

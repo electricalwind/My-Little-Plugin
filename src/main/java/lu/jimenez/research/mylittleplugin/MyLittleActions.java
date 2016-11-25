@@ -10,13 +10,8 @@ public class MyLittleActions {
         return new ActionCount();
     }
 
-
     public static Action getAsVar(String p_name, String p_variable) {
-        return new ActionGetAsVar(p_name, p_variable);
-    }
-
-    public static Action getOrCreate(String p_property, byte p_propertyType) {
-        return new ActionGetOrCreate(p_property, p_propertyType);
+        return new ActionStoreGetInVar(p_name, p_variable);
     }
 
     public static Action ifEmptyThen(final Task then) {
