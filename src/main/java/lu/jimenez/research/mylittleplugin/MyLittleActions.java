@@ -10,8 +10,8 @@ public class MyLittleActions {
         return new ActionCount();
     }
 
-    public static Action getAsVar(String p_name, String p_variable) {
-        return new ActionStoreGetInVar(p_name, p_variable);
+    public static Action getAsVar(String p_name, String p_variable,String... p_params) {
+        return new ActionStoreGetInVar(p_name, p_variable,p_params);
     }
 
     public static Action ifEmptyThen(final Task then) {

@@ -48,6 +48,45 @@ public abstract class ActionTest {
         });
     }
 
+    protected void initGraphR() {
+        graph = new GraphBuilder().withScheduler(new NoopScheduler()).build();
+        final ActionTest selfPointer = this;
+        graph.connect(new Callback<Boolean>() {
+
+            public void on(Boolean result) {
+
+                //create graph nodes
+                final Node n0 = selfPointer.graph.newNode(0, 0);
+                n0.set("name", Type.STRING, "n0");
+                n0.set("value", Type.INT, 8);
+
+                final Node n1 = selfPointer.graph.newNode(0, 0);
+                n1.set("name", Type.STRING, "n1");
+                n1.set("value", Type.INT, 3);
+
+                final Node root = selfPointer.graph.newNode(0, 0);
+                root.set("name", Type.STRING, "root");
+                root.addToRelation("children", n0,"name");
+                root.addToRelation("children", n1,"name");
+
+                //create some index
+                selfPointer.graph.index(0, 0, "roots", new Callback<NodeIndex>() {
+                    public void on(NodeIndex rootsIndex) {
+                        rootsIndex.addToIndex(root, "name");
+                    }
+                });
+                selfPointer.graph.index(0, 0, "nodes", new Callback<NodeIndex>() {
+
+                    public void on(NodeIndex nodesIndex) {
+                        nodesIndex.addToIndex(n0, "name");
+                        nodesIndex.addToIndex(n1, "name");
+                        nodesIndex.addToIndex(root, "name");
+                    }
+                });
+            }
+        });
+    }
+
 
     protected void initComplexGraph(final Callback<Node> callback) {
         graph = new GraphBuilder().withScheduler(new NoopScheduler()).build();
