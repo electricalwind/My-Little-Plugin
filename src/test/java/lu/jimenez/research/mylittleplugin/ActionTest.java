@@ -2,7 +2,9 @@ package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.*;
 import org.mwg.core.scheduler.NoopScheduler;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public abstract class ActionTest {
 
@@ -66,8 +68,8 @@ public abstract class ActionTest {
 
                 final Node root = selfPointer.graph.newNode(0, 0);
                 root.set("name", Type.STRING, "root");
-                root.addToRelation("children", n0,"name");
-                root.addToRelation("children", n1,"name");
+                root.addToRelation("children", n0, "name");
+                root.addToRelation("children", n1, "name");
 
                 //create some index
                 selfPointer.graph.index(0, 0, "roots", new Callback<NodeIndex>() {

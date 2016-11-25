@@ -2,10 +2,10 @@ package lu.jimenez.research.mylittleplugin;
 
 import org.junit.jupiter.api.Test;
 
-class ActionIncrementTest extends ActionTest{
+class ActionInjectAsVarTest extends ActionTest{
 
     @Test
-    public void test(){
+    public void test() {
 
     }
 
