@@ -5,7 +5,7 @@ The Keep First Result action modify the current context result to only keep its 
 This action can be useful in case, several elements are present n the result and the following action doesn't handle this 
 case.
 
-A simple way to call it is:
+A simple way to call after having statically imported it is:
 
 ``` java
 .then(keepFirstResult())

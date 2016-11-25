@@ -8,7 +8,7 @@ The get action allows to get the value(s) of a node property. The property can b
 This action should only be used after a task returning node(s) as result.
 >If more than one node is present in the current result, then it's the aggregation of all the get that is stored.
 
-A simple way to call it is:
+A simple way to call after having statically imported it is:
 
 ``` java
 .then(storeGetAsVAr("name", "childrenName"))
