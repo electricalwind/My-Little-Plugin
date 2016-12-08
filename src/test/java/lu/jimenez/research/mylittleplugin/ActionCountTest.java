@@ -6,15 +6,15 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.count;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.core.task.Actions.readGlobalIndexAll;
-import static org.mwg.core.task.Actions.task;
+import static org.mwg.core.task.Actions.newTask;
+import static org.mwg.core.task.Actions.readGlobalIndex;
 
 class ActionCountTest extends ActionTest {
 
     @Test
     public void testEmpty() {
         initGraph();
-        task()
+        newTask()
                 .then(count())
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {
@@ -28,8 +28,8 @@ class ActionCountTest extends ActionTest {
     @Test
     public void testComplex() {
         initGraph();
-        task()
-                .then(readGlobalIndexAll("nodes"))
+        newTask()
+                .then(readGlobalIndex("nodes"))
                 .then(count())
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {

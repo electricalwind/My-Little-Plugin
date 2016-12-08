@@ -13,9 +13,9 @@ class ActionStoreGetInVarTest extends ActionTest {
     @Test
     public void test() {
         initGraph();
-        task()
-                .then(readGlobalIndexAll("nodes"))
-                .then(get("children"))
+        newTask()
+                .then(readGlobalIndex("nodes"))
+                .then(traverse("children"))
                 .then(storeGetAsVAr("name", "childrenName"))
                 .thenDo(new ActionFunction() {
                             public void eval(TaskContext context) {
@@ -32,11 +32,11 @@ class ActionStoreGetInVarTest extends ActionTest {
     @Test
     public void testComplex() {
         initGraphR();
-        task()
-                .then(readGlobalIndexAll("nodes"))
+        newTask()
+                .then(readGlobalIndex("nodes"))
                 .then(storeGetAsVAr("children", "children"))
                 .then(readVar("children"))
-                .then(get("name"))
+                .then(traverse("name"))
                 .thenDo(new ActionFunction() {
                             public void eval(TaskContext context) {
                                 assertEquals(context.variable("childrenName").get(0), "n0");
@@ -52,11 +52,11 @@ class ActionStoreGetInVarTest extends ActionTest {
     @Test
     public void testComplex2() {
         initGraphR();
-        task()
-                .then(readGlobalIndexAll("nodes"))
-                .then(storeGetAsVAr("children", "children", "name","n0"))
+        newTask()
+                .then(readGlobalIndex("nodes"))
+                .then(storeGetAsVAr("children", "children", "name", "n0"))
                 .then(readVar("children"))
-                .then(get("name"))
+                .then(traverse("name"))
                 .thenDo(new ActionFunction() {
                             public void eval(TaskContext context) {
                                 assertEquals(context.result().size(), 1);

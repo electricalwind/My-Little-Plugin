@@ -105,7 +105,6 @@ public class ActionStoreGetInVar implements Action {
             taskContext.continueTask();
         }
     }
-
     @Override
     public String toString() {
         return "StoreGetAsVar " + _name + " " + _variable;

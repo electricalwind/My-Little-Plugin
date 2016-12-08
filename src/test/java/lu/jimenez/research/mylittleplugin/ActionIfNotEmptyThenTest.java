@@ -13,11 +13,11 @@ class ActionIfNotEmptyThenTest extends ActionTest {
     @Test
     public void test() {
         initGraph();
-        task()
+        newTask()
                 .then(declareVar("myvar"))
                 .then(inject("content"))
                 .then(ifNotEmptyThen(
-                        task()
+                        newTask()
                                 .then(addToVar("myvar"))
                         )
                 )

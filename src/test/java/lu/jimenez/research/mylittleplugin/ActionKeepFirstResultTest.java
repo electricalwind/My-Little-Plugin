@@ -6,17 +6,15 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.keepFirstResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.core.task.Actions.get;
-import static org.mwg.core.task.Actions.readGlobalIndexAll;
-import static org.mwg.core.task.Actions.task;
+import static org.mwg.core.task.Actions.*;
 
 class ActionKeepFirstResultTest extends ActionTest {
 
     @Test
     public void test() {
         initGraph();
-        task().then(readGlobalIndexAll("nodes"))
-                .then(get("children"))
+        newTask().then(readGlobalIndex("nodes"))
+                .then(traverse("children"))
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {
                         assertEquals(context.result().size(),2);
@@ -30,5 +28,6 @@ class ActionKeepFirstResultTest extends ActionTest {
         }).execute(graph,null);
         removeGraph();
     }
+
 
 }

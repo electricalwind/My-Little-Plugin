@@ -8,7 +8,7 @@ A simple way to call after having statically imported it is:
 
 ``` java
 .then(ifNotEmptyThen(
-                        task()
+                        newTask()
                                 .then(addToVar("myvar"))
                         )
                 )
