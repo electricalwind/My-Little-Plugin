@@ -63,9 +63,9 @@ import static lu.jimenez.research.mylittleplugin.MyLittleActions.*;
 Then you can call them when you want within a task :
 
 ``` java
-        task()
+        newTask()
                 .then(readGlobalIndexAll("nodes"))
-                .then(get("children"))
+                .then(traverse("children")) //formerly get
                 .then(storeGetAsVAr("name", "childrenName"))
                 .execute(graph, null);
 ```
