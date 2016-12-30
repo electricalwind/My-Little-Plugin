@@ -19,8 +19,12 @@ public class ActionInjectAsVar implements Action {
         taskContext.continueTask();
     }
 
+    public void serialize(StringBuilder builder) {
+        throw new RuntimeException("inject as var remote action not managed yet!");
+    }
+
     @Override
     public String toString(){
-        return "injecting "+_toInject.toString()+" in var "+_variable;
+        return "inject("+_toInject.toString()+","+_variable+")";
     }
 }

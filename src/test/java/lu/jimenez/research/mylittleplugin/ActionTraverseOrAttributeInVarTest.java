@@ -8,7 +8,7 @@ import static lu.jimenez.research.mylittleplugin.MyLittleActions.storeGetAsVAr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mwg.core.task.Actions.*;
 
-class ActionStoreGetInVarTest extends ActionTest {
+class ActionTraverseOrAttributeInVarTest extends ActionTest {
 
     @Test
     public void test() {

@@ -2,19 +2,20 @@ package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.*;
 import org.mwg.base.BaseNode;
+import org.mwg.core.task.TaskHelper;
 import org.mwg.plugin.Job;
 import org.mwg.struct.RelationIndexed;
 import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 import org.mwg.task.TaskResult;
 
-public class ActionStoreGetInVar implements Action {
+public class ActionTraverseOrAttributeInVar implements Action {
 
     private final String _name;
     private final String _variable;
     private final String[] _params;
 
-    ActionStoreGetInVar(final String p_name, final String p_variable, final String... p_params) {
+    ActionTraverseOrAttributeInVar(final String p_name, final String p_variable, final String... p_params) {
         super();
         this._name = p_name;
         this._variable = p_variable;
@@ -105,8 +106,27 @@ public class ActionStoreGetInVar implements Action {
             taskContext.continueTask();
         }
     }
+
+    public void serialize(StringBuilder builder) {
+        builder.append(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR);
+        builder.append(Constants.TASK_PARAM_OPEN);
+        TaskHelper.serializeString(_name, builder);
+        builder.append(Constants.TASK_PARAM_SEP);
+        TaskHelper.serializeString(_variable, builder);
+        builder.append(Constants.TASK_PARAM_SEP);
+        if (_params != null && _params.length > 0) {
+            builder.append(Constants.TASK_PARAM_SEP);
+            TaskHelper.serializeStringParams(_params, builder);
+        }
+        builder.append(Constants.TASK_PARAM_CLOSE);
+
+
+    }
+
     @Override
     public String toString() {
-        return "StoreGetAsVar " + _name + " " + _variable;
+        final StringBuilder res = new StringBuilder();
+        serialize(res);
+        return res.toString();
     }
 }

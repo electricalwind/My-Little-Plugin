@@ -1,5 +1,6 @@
 package lu.jimenez.research.mylittleplugin;
 
+import org.mwg.Constants;
 import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 
@@ -14,8 +15,16 @@ public class ActionCount implements Action {
         taskContext.continueWith(taskContext.wrap(count));
     }
 
+    public void serialize(StringBuilder builder) {
+        builder.append(MLPActionNames.COUNT);
+        builder.append(Constants.TASK_PARAM_OPEN);
+        builder.append(Constants.TASK_PARAM_CLOSE);
+    }
+
     @Override
     public String toString(){
-        return "count()";
+        final StringBuilder res = new StringBuilder();
+        serialize(res);
+        return res.toString();
     }
 }
