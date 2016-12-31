@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mwg.task.ActionFunction;
 import org.mwg.task.TaskContext;
 
-import static lu.jimenez.research.mylittleplugin.MyLittleActions.storeGetAsVAr;
+import static lu.jimenez.research.mylittleplugin.MyLittleActions.traverseOrAttributeInVar;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mwg.core.task.Actions.*;
 
@@ -16,7 +16,7 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
         newTask()
                 .then(readGlobalIndex("nodes"))
                 .then(traverse("children"))
-                .then(storeGetAsVAr("name", "childrenName"))
+                .then(traverseOrAttributeInVar("name", "childrenName"))
                 .thenDo(new ActionFunction() {
                             public void eval(TaskContext context) {
                                 assertEquals(context.variable("childrenName").get(0), "n0");
@@ -34,7 +34,7 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
         initGraphR();
         newTask()
                 .then(readGlobalIndex("nodes"))
-                .then(storeGetAsVAr("children", "children"))
+                .then(traverseOrAttributeInVar("children", "children"))
                 .then(readVar("children"))
                 .then(traverse("name"))
                 .thenDo(new ActionFunction() {
@@ -54,7 +54,7 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
         initGraphR();
         newTask()
                 .then(readGlobalIndex("nodes"))
-                .then(storeGetAsVAr("children", "children", "name", "n0"))
+                .then(traverseOrAttributeInVar("children", "children", "name", "n0"))
                 .then(readVar("children"))
                 .then(traverse("name"))
                 .thenDo(new ActionFunction() {

@@ -63,3 +63,12 @@ hs_err_pid*
 src/main/resources/
 
 .idea/
+/.idea/compiler.xml
+/.idea/misc.xml
+/.idea/codeStyleSettings.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/uiDesigner.xml
+/.idea/workspace.xml
+/.idea/encodings.xml
+/additionalActionPluginMWDB.iml

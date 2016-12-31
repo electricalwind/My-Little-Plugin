@@ -10,7 +10,7 @@ public class MyLittleActions {
         return new ActionCount();
     }
 
-    public static Action storeGetAsVAr(String p_name, String p_variable, String... p_params) {
+    public static Action traverseOrAttributeInVar(String p_name, String p_variable, String... p_params) {
         return new ActionTraverseOrAttributeInVar(p_name, p_variable, p_params);
     }
 

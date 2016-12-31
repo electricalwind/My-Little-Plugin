@@ -9,6 +9,8 @@ import org.mwg.task.TaskActionFactory;
 
 import java.util.Map;
 
+import static lu.jimenez.research.mylittleplugin.MyLittleActions.*;
+
 public class MyLittleActionPlugin extends BasePlugin {
 
     public MyLittleActionPlugin() {
@@ -16,7 +18,7 @@ public class MyLittleActionPlugin extends BasePlugin {
         //Count
         declareTaskAction(MLPActionNames.COUNT, new TaskActionFactory() {
             public Action create(String[] params, Map<Integer, Task> contextTasks) {
-                return new ActionCount();
+                return count();
             }
         });
 
@@ -27,7 +29,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                     throw new RuntimeException(MLPActionNames.IF_EMPTY_THEN + " action needs one parameters. Received:" + params.length);
                 }
                 final Task taskThen = getOrCreate(contextTasks, params[0]);
-                return new ActionIfEmptyThen(taskThen);
+                return ifEmptyThen(taskThen);
             }
         });
 
@@ -38,7 +40,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                     throw new RuntimeException(MLPActionNames.IF_NOT_EMPTY_THEN + " action needs one parameters. Received:" + params.length);
                 }
                 final Task taskThen = getOrCreate(contextTasks, params[0]);
-                return new ActionIfNotEmptyThen(taskThen);
+                return  ifNotEmptyThen(taskThen);
             }
         });
 
@@ -50,7 +52,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                 }
                 try {
                     int incre = Integer.parseInt(params[1]);
-                    return new ActionIncrement(params[0], incre);
+                    return increment(params[0], incre);
                 } catch (NumberFormatException excep) {
                     throw new RuntimeException(MLPActionNames.INCREMENT + " action needs a parsable integer as second argument. Received:" + params[1]);
                 }
@@ -61,7 +63,7 @@ public class MyLittleActionPlugin extends BasePlugin {
         //Keep First
         declareTaskAction(MLPActionNames.KEEP_FIRST_RESULT, new TaskActionFactory() {
             public Action create(String[] params, Map<Integer, Task> contextTasks) {
-                return new ActionKeepFirstResult();
+                return keepFirstResult();
             }
         });
 
@@ -75,7 +77,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                 if (params.length > 2) {
                     System.arraycopy(params, 2, getParams, 0, params.length - 2);
                 }
-                return new ActionTraverseOrAttributeInVar(params[0], params[1], getParams);
+                return traverseOrAttributeInVar(params[0], params[1], getParams);
             }
         });
     }
