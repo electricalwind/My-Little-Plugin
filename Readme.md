@@ -6,6 +6,8 @@
 
 ![MWDB-version](https://img.shields.io/badge/MWDB--version-11--SNAPSHOT-green.svg)
 
+![version](https://img.shields.io/badge/version-1.0-blue.svg)
+
 This library bring additional actions to the [MWDB](https://github.com/kevoree-modeling/mwDB) project. This library is compatible with the latest MWDB api, that will be introduced in the 11th version. 
 Compatibility with previous versions of MWDB api is not supported anymore.
 
@@ -31,7 +33,7 @@ This library aims at providing such actions and will evolves alongside MWDB, i.e
 Currently offered actions are: 
 
 * [Count](doc/Count.md)
-* [Store get as var](doc/StoreGetAsVar.md)
+* [Traverse Or Attribute in Var](doc/TraverseOrAttributeInVar.md)
 * [If empty then](doc/IfEmptyThen.md)
 * [If not empty then](doc/IfNotEmptyThen.md)
 * [Inject as Var](doc/InjectAsVar.md)
@@ -64,8 +66,8 @@ Then you can call them when you want within a task :
 
 ``` java
         newTask()
-                .then(readGlobalIndexAll("nodes"))
-                .then(traverse("children")) //formerly get
-                .then(storeGetAsVAr("name", "childrenName"))
+                .readGlobalIndexAll("nodes")
+                .traverse("children") //formerly get
+                .then(traverseOrAttributeInVar("name", "childrenName"))
                 .execute(graph, null);
 ```

@@ -11,8 +11,8 @@ A simple way to call after having statically imported it is:
 ``` java
 .then(ifEmptyThen(
                         newTask()
-                                .then(inject("content"))
-                                .then(addToVar("myvar"))
+                                .inject("content")
+                                .addToVar("myvar")
                         )
                 )
 ```

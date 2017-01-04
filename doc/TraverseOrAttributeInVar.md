@@ -1,4 +1,4 @@
-# Action: StoreGetAsVar
+# Action: TraverseOrAttributeInVar
 
 This action is similar to the traverse action *(note formerly get)* at the exception that the current context result is not modify. The result of the get will be store in a variable.
 
@@ -11,7 +11,7 @@ This action should only be used after a task returning node(s) as result.
 A simple way to call after having statically imported it is:
 
 ``` java
-.then(storeGetAsVAr("name", "childrenName"))
+.then(traverseOrAttributeInVar("name", "childrenName"))
 ```
 The first argument being the attribute name to get and the second one the name of the var in which we should store the result of the get.
 
@@ -20,8 +20,8 @@ The main point of this action is that several traverse *(formerly get)* in a row
 task()
     .then(readGlobalIndex("nodes"))
     .then(traverse("children"))
-    .then(storeGetAsVAr("name", "childrenName"))
-    .then(storeGetAsVAr("value", "childrenValue"))
+    .then(traverseOrAttributeInVar("name", "childrenName"))
+    .then(traverseOrAttributeInVar("value", "childrenValue"))
 ```
 
 
@@ -30,7 +30,7 @@ Like the traverse *(formerly get)* action, the store get as var action accepts a
 ``` java
  task()
                 .then(readGlobalIndexAll("nodes"))
-                .then(storeGetAsVAr("children", "children", "name","n0"))
+                .then(traverseOrAttributeInVar("children", "children", "name","n0"))
                 .then(readVar("children"))
 ```
 
