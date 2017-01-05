@@ -10,7 +10,7 @@ public class ActionIncrement implements Action {
     private final String _variable;
     private final int _increment;
 
-    ActionIncrement(String p_variable, int p_increment) {
+    ActionIncrement(final String p_variable, final int p_increment) {
         super();
         _variable = p_variable;
         _increment = p_increment;

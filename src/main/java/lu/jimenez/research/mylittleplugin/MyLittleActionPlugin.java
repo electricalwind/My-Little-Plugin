@@ -44,6 +44,30 @@ public class MyLittleActionPlugin extends BasePlugin {
             }
         });
 
+        //IF empty then else
+        declareTaskAction(MLPActionNames.IF_EMPTY_THEN, new TaskActionFactory() {
+            public Action create(String[] params, Map<Integer, Task> contextTasks) {
+                if (params.length != 2) {
+                    throw new RuntimeException(MLPActionNames.IF_EMPTY_THEN_ELSE + " action needs two parameters. Received:" + params.length);
+                }
+                final Task taskThen = getOrCreate(contextTasks, params[0]);
+                final Task taskElse = getOrCreate(contextTasks, params[1]);
+                return ifEmptyThenElse(taskThen,taskElse);
+            }
+        });
+
+        //If not empty then else
+        declareTaskAction(MLPActionNames.IF_NOT_EMPTY_THEN, new TaskActionFactory() {
+            public Action create(String[] params, Map<Integer, Task> contextTasks) {
+                if (params.length != 2) {
+                    throw new RuntimeException(MLPActionNames.IF_NOT_EMPTY_THEN_ELSE + " action needs two parameters. Received:" + params.length);
+                }
+                final Task taskThen = getOrCreate(contextTasks, params[0]);
+                final Task taskElse = getOrCreate(contextTasks, params[1]);
+                return  ifNotEmptyThenElse(taskThen,taskElse);
+            }
+        });
+
         //Increment
         declareTaskAction(MLPActionNames.INCREMENT, new TaskActionFactory() {
             public Action create(String[] params, Map<Integer, Task> contextTasks) {
@@ -59,6 +83,7 @@ public class MyLittleActionPlugin extends BasePlugin {
 
             }
         });
+
 
         //Keep First
         declareTaskAction(MLPActionNames.KEEP_FIRST_RESULT, new TaskActionFactory() {

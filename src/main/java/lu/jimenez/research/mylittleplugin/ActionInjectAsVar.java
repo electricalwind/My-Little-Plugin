@@ -9,7 +9,7 @@ public class ActionInjectAsVar implements Action {
     private final String _variable;
     private final Object _toInject;
 
-    ActionInjectAsVar(String p_variable, final Object toInject){
+    ActionInjectAsVar(final String p_variable, final Object toInject){
         _variable = p_variable;
         _toInject = toInject;
     }
