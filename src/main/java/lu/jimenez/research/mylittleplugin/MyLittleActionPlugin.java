@@ -40,7 +40,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                     throw new RuntimeException(MLPActionNames.IF_NOT_EMPTY_THEN + " action needs one parameters. Received:" + params.length);
                 }
                 final Task taskThen = getOrCreate(contextTasks, params[0]);
-                return  ifNotEmptyThen(taskThen);
+                return ifNotEmptyThen(taskThen);
             }
         });
 
@@ -52,7 +52,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                 }
                 final Task taskThen = getOrCreate(contextTasks, params[0]);
                 final Task taskElse = getOrCreate(contextTasks, params[1]);
-                return ifEmptyThenElse(taskThen,taskElse);
+                return ifEmptyThenElse(taskThen, taskElse);
             }
         });
 
@@ -64,7 +64,7 @@ public class MyLittleActionPlugin extends BasePlugin {
                 }
                 final Task taskThen = getOrCreate(contextTasks, params[0]);
                 final Task taskElse = getOrCreate(contextTasks, params[1]);
-                return  ifNotEmptyThenElse(taskThen,taskElse);
+                return ifNotEmptyThenElse(taskThen, taskElse);
             }
         });
 
@@ -103,6 +103,26 @@ public class MyLittleActionPlugin extends BasePlugin {
                     System.arraycopy(params, 2, getParams, 0, params.length - 2);
                 }
                 return traverseOrAttributeInVar(params[0], params[1], getParams);
+            }
+        });
+
+        //Flip Vars
+        declareTaskAction(MLPActionNames.FLIP_VARS, new TaskActionFactory() {
+            public Action create(String[] params, Map<Integer, Task> contextTasks) {
+                if (params.length != 2) {
+                    throw new RuntimeException(MLPActionNames.FLIP_VARS + " action needs two parameters. Received:" + params.length);
+                }
+                return flipVars(params[0], params[1]);
+            }
+        });
+
+        //Flip Vars
+        declareTaskAction(MLPActionNames.FLIP_VAR_AND_RESULT, new TaskActionFactory() {
+            public Action create(String[] params, Map<Integer, Task> contextTasks) {
+                if (params.length != 1) {
+                    throw new RuntimeException(MLPActionNames.FLIP_VARS + " action needs one parameters. Received:" + params.length);
+                }
+                return flipVarAndResult(params[0]);
             }
         });
     }

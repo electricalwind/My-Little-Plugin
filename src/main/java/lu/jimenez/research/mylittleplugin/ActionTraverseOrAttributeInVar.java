@@ -110,9 +110,9 @@ public class ActionTraverseOrAttributeInVar implements Action {
     public void serialize(StringBuilder builder) {
         builder.append(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR);
         builder.append(Constants.TASK_PARAM_OPEN);
-        TaskHelper.serializeString(_name, builder);
+        TaskHelper.serializeString(_name, builder,false);
         builder.append(Constants.TASK_PARAM_SEP);
-        TaskHelper.serializeString(_variable, builder);
+        TaskHelper.serializeString(_variable, builder,false);
         builder.append(Constants.TASK_PARAM_SEP);
         if (_params != null && _params.length > 0) {
             builder.append(Constants.TASK_PARAM_SEP);

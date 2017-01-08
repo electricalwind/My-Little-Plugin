@@ -25,9 +25,9 @@ public class ActionIncrement implements Action {
     public void serialize(StringBuilder builder) {
         builder.append(MLPActionNames.COUNT);
         builder.append(Constants.TASK_PARAM_OPEN);
-        TaskHelper.serializeString(_variable, builder);
+        TaskHelper.serializeString(_variable, builder,false);
         builder.append(Constants.TASK_PARAM_SEP);
-        TaskHelper.serializeString(Integer.toString(_increment), builder);
+        TaskHelper.serializeString(Integer.toString(_increment), builder,false);
         builder.append(Constants.TASK_PARAM_CLOSE);
     }
 

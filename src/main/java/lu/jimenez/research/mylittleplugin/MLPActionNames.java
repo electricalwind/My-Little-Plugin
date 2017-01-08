@@ -11,5 +11,7 @@ public class MLPActionNames {
     public static String INJECT_AS_VAR = "injectAsVar";
     public static String KEEP_FIRST_RESULT = "keepFirstResult";
     public static String TRAVERSE_OR_ATTRIBUTE_IN_VAR = "traverseInVar";
+    public static String FLIP_VARS = "flipVars";
+    public static String FLIP_VAR_AND_RESULT = "flipVarAndResult";
 
 }

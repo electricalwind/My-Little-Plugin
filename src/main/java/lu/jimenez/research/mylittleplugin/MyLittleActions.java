@@ -42,4 +42,12 @@ public class MyLittleActions {
         return new ActionKeepFirstResult();
     }
 
+    public static Action flipVars(final String var1, final String var2) {
+        return new ActionFlipVars(var1,var2);
+    }
+
+    public static Action flipVarAndResult(final String var) {
+        return new ActionFlipVarAndResult(var);
+    }
+
 }
