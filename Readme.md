@@ -41,6 +41,8 @@ Currently offered actions are:
 * [Inject as Var](doc/InjectAsVar.md)
 * [Increment](doc/Increment.md)
 * [Keep first result](doc/KeepFirstResult.md)
+* [Flip Vars](doc/FlipVars.md)
+* [Flip Var And Result](doc/FlipVarAndResult.md)
 
 ### Can I create my own action?
 
