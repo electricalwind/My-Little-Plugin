@@ -46,6 +46,7 @@ public abstract class ActionTest {
                         nodesIndex.addToIndex(root, "name");
                     }
                 });
+
             }
         });
     }

@@ -13,5 +13,6 @@ public class MLPActionNames {
     public static String TRAVERSE_OR_ATTRIBUTE_IN_VAR = "traverseInVar";
     public static String FLIP_VARS = "flipVars";
     public static String FLIP_VAR_AND_RESULT = "flipVarAndResult";
+    public static String CHECK_FOR_FUTURE = "checkForFuture";
 
 }

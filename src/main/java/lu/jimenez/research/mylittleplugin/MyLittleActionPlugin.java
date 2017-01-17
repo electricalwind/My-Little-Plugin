@@ -22,6 +22,13 @@ public class MyLittleActionPlugin extends BasePlugin {
             }
         });
 
+        //Check for future
+        declareTaskAction(MLPActionNames.CHECK_FOR_FUTURE, new TaskActionFactory() {
+            public Action create(String[] params, Map<Integer, Task> contextTasks) {
+                return checkForFuture();
+            }
+        });
+
         //IF empty then
         declareTaskAction(MLPActionNames.IF_EMPTY_THEN, new TaskActionFactory() {
             public Action create(String[] params, Map<Integer, Task> contextTasks) {

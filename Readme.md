@@ -32,6 +32,7 @@ This library aims at providing such actions and will evolves alongside MWDB, i.e
 
 Currently offered actions are: 
 
+* [Check For Future](doc/CheckForFuture.md)
 * [Count](doc/Count.md)
 * [Traverse Or Attribute in Var](doc/TraverseOrAttributeInVar.md)
 * [If empty then](doc/IfEmptyThen.md)

@@ -10,6 +10,8 @@ public class MyLittleActions {
         return new ActionCount();
     }
 
+    public static Action checkForFuture() { return new ActionCheckForFuture();}
+
     public static Action traverseOrAttributeInVar(final String p_name, final String p_variable, final String... p_params) {
         return new ActionTraverseOrAttributeInVar(p_name, p_variable, p_params);
     }
