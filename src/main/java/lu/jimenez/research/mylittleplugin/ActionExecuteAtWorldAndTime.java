@@ -64,8 +64,8 @@ public class ActionExecuteAtWorldAndTime extends CF_Action {
                 .travelInWorld(_world)
                 .travelInTime(_time)
                 .pipe(_task)
-                .travelInWorld("world")
-                .travelInTime("time")
+                .travelInWorld("{{world}}")
+                .travelInTime("{{time}}")
                 .executeFrom(ctx, ctx.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
                     public void on(TaskResult res) {
                         ctx.continueWith(res);
