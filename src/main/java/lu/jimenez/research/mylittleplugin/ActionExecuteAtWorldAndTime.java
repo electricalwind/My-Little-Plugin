@@ -2,9 +2,9 @@ package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.Callback;
 import org.mwg.Constants;
-import org.mwg.core.task.CF_Action;
-import org.mwg.core.task.CoreTask;
-import org.mwg.core.task.TaskHelper;
+import org.mwg.internal.task.CF_Action;
+import org.mwg.internal.task.CoreTask;
+import org.mwg.internal.task.TaskHelper;
 import org.mwg.plugin.SchedulerAffinity;
 import org.mwg.task.ActionFunction;
 import org.mwg.task.Task;
@@ -13,7 +13,7 @@ import org.mwg.task.TaskResult;
 
 import java.util.Map;
 
-import static org.mwg.core.task.Actions.newTask;
+import static org.mwg.internal.task.CoreActions.newTask;
 
 public class ActionExecuteAtWorldAndTime extends CF_Action {
 

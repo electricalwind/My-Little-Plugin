@@ -1,7 +1,7 @@
 package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.*;
-import org.mwg.core.scheduler.NoopScheduler;
+import org.mwg.internal.scheduler.NoopScheduler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

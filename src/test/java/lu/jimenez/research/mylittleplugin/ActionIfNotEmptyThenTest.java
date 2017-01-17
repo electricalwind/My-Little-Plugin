@@ -6,7 +6,7 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.ifNotEmptyThen;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.core.task.Actions.*;
+import static org.mwg.internal.task.CoreActions.*;
 
 class ActionIfNotEmptyThenTest extends ActionTest {
 
@@ -29,5 +29,7 @@ class ActionIfNotEmptyThenTest extends ActionTest {
                 }).execute(graph, null);
         removeGraph();
     }
+
+
 
 }

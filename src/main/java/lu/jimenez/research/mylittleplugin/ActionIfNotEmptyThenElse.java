@@ -2,8 +2,8 @@ package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.Callback;
 import org.mwg.Constants;
-import org.mwg.core.task.CF_Action;
-import org.mwg.core.task.CoreTask;
+import org.mwg.internal.task.CF_Action;
+import org.mwg.internal.task.CoreTask;
 import org.mwg.plugin.SchedulerAffinity;
 import org.mwg.task.Task;
 import org.mwg.task.TaskContext;

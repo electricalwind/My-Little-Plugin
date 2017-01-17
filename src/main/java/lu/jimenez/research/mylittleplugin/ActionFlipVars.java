@@ -1,7 +1,7 @@
 package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.Constants;
-import org.mwg.core.task.TaskHelper;
+import org.mwg.internal.task.TaskHelper;
 import org.mwg.task.Action;
 import org.mwg.task.TaskContext;
 

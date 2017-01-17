@@ -2,7 +2,7 @@ package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.*;
 import org.mwg.base.BaseNode;
-import org.mwg.core.task.TaskHelper;
+import org.mwg.internal.task.TaskHelper;
 import org.mwg.plugin.Job;
 import org.mwg.struct.RelationIndexed;
 import org.mwg.task.Action;

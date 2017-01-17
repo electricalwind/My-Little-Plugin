@@ -6,7 +6,7 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.flipVars;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.core.task.Actions.newTask;
+import static org.mwg.internal.task.CoreActions.newTask;
 
 class ActionFlipVarsTest extends ActionTest{
 

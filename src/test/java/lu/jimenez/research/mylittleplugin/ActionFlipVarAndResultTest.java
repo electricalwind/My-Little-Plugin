@@ -7,7 +7,7 @@ import org.mwg.utility.VerboseHook;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.flipVarAndResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.core.task.Actions.newTask;
+import static org.mwg.internal.task.CoreActions.newTask;
 
 class ActionFlipVarAndResultTest extends ActionTest {
 

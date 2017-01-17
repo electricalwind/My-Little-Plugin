@@ -1,8 +1,8 @@
 package lu.jimenez.research.mylittleplugin;
 
 import org.mwg.base.BasePlugin;
-import org.mwg.core.task.CoreTask;
-import org.mwg.core.task.TaskHelper;
+import org.mwg.internal.task.CoreTask;
+import org.mwg.internal.task.TaskHelper;
 import org.mwg.task.Action;
 import org.mwg.task.Task;
 import org.mwg.task.TaskActionFactory;

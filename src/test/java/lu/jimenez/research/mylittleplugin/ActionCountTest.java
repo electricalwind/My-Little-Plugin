@@ -6,8 +6,8 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.count;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.core.task.Actions.newTask;
-import static org.mwg.core.task.Actions.readGlobalIndex;
+import static org.mwg.internal.task.CoreActions.newTask;
+import static org.mwg.internal.task.CoreActions.readGlobalIndex;
 
 class ActionCountTest extends ActionTest {
 
