@@ -7,6 +7,7 @@ import org.mwg.task.TaskContext;
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.traverseOrAttributeInVar;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mwg.internal.task.CoreActions.*;
+import static org.mwg.task.Tasks.newTask;
 
 class ActionTraverseOrAttributeInVarTest extends ActionTest {
 

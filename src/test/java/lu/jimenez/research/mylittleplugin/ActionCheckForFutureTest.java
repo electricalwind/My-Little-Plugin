@@ -8,7 +8,7 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.checkForFuture;
 import static org.junit.Assert.assertEquals;
-import static org.mwg.internal.task.CoreActions.newTask;
+import static org.mwg.task.Tasks.newTask;
 
 class ActionCheckForFutureTest extends ActionTest{
 

@@ -13,7 +13,7 @@ import org.mwg.task.TaskResult;
 
 import java.util.Map;
 
-import static org.mwg.internal.task.CoreActions.newTask;
+import static org.mwg.task.Tasks.newTask;
 
 public class ActionExecuteAtWorldAndTime extends CF_Action {
 

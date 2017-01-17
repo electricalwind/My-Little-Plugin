@@ -9,7 +9,7 @@ import org.mwg.task.TaskContext;
 
 import static lu.jimenez.research.mylittleplugin.MyLittleActions.executeAtWorldAndTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mwg.internal.task.CoreActions.newTask;
+import static org.mwg.task.Tasks.newTask;
 
 class ActionExecuteAtWorldAndTimeTest extends ActionTest {
 
