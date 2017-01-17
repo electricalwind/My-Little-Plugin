@@ -10,7 +10,9 @@ public class MyLittleActions {
         return new ActionCount();
     }
 
-    public static Action checkForFuture() { return new ActionCheckForFuture();}
+    public static Action checkForFuture() {
+        return new ActionCheckForFuture();
+    }
 
     public static Action traverseOrAttributeInVar(final String p_name, final String p_variable, final String... p_params) {
         return new ActionTraverseOrAttributeInVar(p_name, p_variable, p_params);
@@ -45,11 +47,15 @@ public class MyLittleActions {
     }
 
     public static Action flipVars(final String var1, final String var2) {
-        return new ActionFlipVars(var1,var2);
+        return new ActionFlipVars(var1, var2);
     }
 
     public static Action flipVarAndResult(final String var) {
         return new ActionFlipVarAndResult(var);
+    }
+
+    public static Action executeAtWorldAndTime(final String world, final String time, final Task then) {
+        return new ActionExecuteAtWorldAndTime(world, time, then);
     }
 
 }

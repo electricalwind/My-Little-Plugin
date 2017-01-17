@@ -29,6 +29,17 @@ public class MyLittleActionPlugin extends BasePlugin {
             }
         });
 
+        //Execute At World ANd Time
+        declareTaskAction(MLPActionNames.EXECUTE_AT_WORLD_AND_TIME, new TaskActionFactory() {
+            public Action create(String[] params, Map<Integer, Task> contextTasks) {
+                if (params.length != 3) {
+                    throw new RuntimeException(MLPActionNames.EXECUTE_AT_WORLD_AND_TIME + " action needs three parameters. Received:" + params.length);
+                }
+                final Task taskThen = getOrCreate(contextTasks, params[2]);
+                return executeAtWorldAndTime(params[0],params[1],taskThen);
+            }
+        });
+
         //IF empty then
         declareTaskAction(MLPActionNames.IF_EMPTY_THEN, new TaskActionFactory() {
             public Action create(String[] params, Map<Integer, Task> contextTasks) {
