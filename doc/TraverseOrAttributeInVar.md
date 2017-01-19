@@ -1,9 +1,9 @@
 # Action: TraverseOrAttributeInVar
 
-This action is similar to the traverse action *(note formerly get)* at the exception that the current context result is not modify. The result of the get will be store in a variable.
+This action is similar to the traverse action *(note formerly get)* at the exception that the current context result is not modify. The result of the traverse will be store in a variable.
 
 >Reminder:
-The get action allows to get the value(s) of a node property. The property can be of any type, a relation, a map or a primitive Type.
+The traverse action allows to get the value(s) of a node property. The property can be of any type, a relation, a map or a primitive Type.
 
 This action should only be used after a task returning node(s) as result.
 >If more than one node is present in the current result, then it's the aggregation of all the get that is stored.
