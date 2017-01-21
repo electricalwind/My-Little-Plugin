@@ -13,6 +13,7 @@ class ActionFlipVarsTest extends ActionTest{
     @Test
     public void test(){
         initGraph();
+        final int[] counter ={0};
         newTask()
                 .inject(1)
                 .defineAsVar("var1")
@@ -23,9 +24,12 @@ class ActionFlipVarsTest extends ActionTest{
                     public void eval(TaskContext context) {
                         assertEquals(context.variable("var1").get(0),2);
                         assertEquals(context.variable("var2").get(0),1);
+                        counter[0]++;
+                        context.continueTask();
                     }
                 })
                 .execute(graph,null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 

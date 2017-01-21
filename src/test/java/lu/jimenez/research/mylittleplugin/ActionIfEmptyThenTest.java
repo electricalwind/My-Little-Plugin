@@ -14,6 +14,7 @@ class ActionIfEmptyThenTest extends ActionTest{
     @Test
     public void test(){
         initGraph();
+        final int[] counter ={0};
         newTask()
                 .then(declareVar("myvar"))
                 .then(ifEmptyThen(
@@ -26,8 +27,11 @@ class ActionIfEmptyThenTest extends ActionTest{
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {
                         assertEquals(context.result().get(0), "content");
+                        counter[0]++;
+                        context.continueTask();
                     }
                 }).execute(graph,null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 

@@ -15,6 +15,7 @@ class ActionFlipVarAndResultTest extends ActionTest {
     @Test
     public void testRes() {
         initGraph();
+        final int[] counter ={0};
         newTask()
                 .inject(1)
                 .defineAsVar("var1")
@@ -24,9 +25,12 @@ class ActionFlipVarAndResultTest extends ActionTest {
                     public void eval(TaskContext context) {
                         assertEquals(context.variable("var1").get(0), 2);
                         assertEquals(context.result().get(0), 1);
+                        counter[0]++;
+                        context.continueTask();
                     }
                 }).addHook(new VerboseHook())
                 .execute(graph, null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 }

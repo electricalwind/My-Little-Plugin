@@ -14,6 +14,7 @@ class ActionIncrementTest extends ActionTest{
     @Test
     public void test(){
     initGraph();
+        final int[] counter ={0};
     newTask()
             .then(inject(1))
             .then(addToVar("inc"))
@@ -21,15 +22,20 @@ class ActionIncrementTest extends ActionTest{
             .thenDo(new ActionFunction() {
                 public void eval(TaskContext context) {
                     assertEquals(context.variable("inc").get(0),2);
+                    counter[0]++;
+                    context.continueTask();
                 }
             })
             .then(increment("inc",2))
             .thenDo(new ActionFunction() {
                 public void eval(TaskContext context) {
                     assertEquals(context.variable("inc").get(0),4);
+                    counter[0]++;
+                    context.continueTask();
                 }
             })
             .execute(graph,null);
+        assertEquals(2, counter[0]);
     removeGraph();
     }
 

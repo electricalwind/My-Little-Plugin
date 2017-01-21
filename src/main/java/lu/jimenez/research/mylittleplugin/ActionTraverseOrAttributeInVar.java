@@ -40,6 +40,8 @@ public class ActionTraverseOrAttributeInVar implements Action {
                                 RelationIndexed relationIndexed = (RelationIndexed) casted.get(flatName);
                                 if (relationIndexed != null) {
                                     Query query = taskContext.graph().newQuery();
+                                    query.setWorld(taskContext.world());
+                                    query.setTime(taskContext.time());
                                     String previous = null;
                                     for (int k = 0; k < _params.length; k++) {
                                         if (previous != null) {

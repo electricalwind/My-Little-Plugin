@@ -14,6 +14,7 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
     @Test
     public void test() {
         initGraph();
+        final int[] counter = {0};
         newTask()
                 .then(readGlobalIndex("nodes"))
                 .then(traverse("children"))
@@ -22,17 +23,21 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
                             public void eval(TaskContext context) {
                                 assertEquals(context.variable("childrenName").get(0), "n0");
                                 assertEquals(context.variable("childrenName").get(1), "n1");
+                                counter[0]++;
+                                context.continueTask();
                             }
                         }
                 )
                 //.hook(new VerboseHookFactory())
                 .execute(graph, null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 
     @Test
     public void testComplex() {
         initGraphR();
+        final int[] counter = {0};
         newTask()
                 .then(readGlobalIndex("nodes"))
                 .then(traverseOrAttributeInVar("children", "children"))
@@ -40,19 +45,23 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
                 .then(traverse("name"))
                 .thenDo(new ActionFunction() {
                             public void eval(TaskContext context) {
-                                assertEquals(context.variable("childrenName").get(0), "n0");
-                                assertEquals(context.variable("childrenName").get(1), "n1");
+                                assertEquals(context.resultAsNodes().get(0), "n0");
+                                assertEquals(context.resultAsNodes().get(1), "n1");
+                                counter[0]++;
+                                context.continueTask();
                             }
                         }
                 )
                 //.hook(new VerboseHookFactory())
                 .execute(graph, null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 
     @Test
     public void testComplex2() {
         initGraphR();
+        final int[] counter = {0};
         newTask()
                 .then(readGlobalIndex("nodes"))
                 .then(traverseOrAttributeInVar("children", "children", "name", "n0"))
@@ -62,10 +71,13 @@ class ActionTraverseOrAttributeInVarTest extends ActionTest {
                             public void eval(TaskContext context) {
                                 assertEquals(context.result().size(), 1);
                                 assertEquals(context.result().get(0), "n0");
+                                counter[0]++;
+                                context.continueTask();
                             }
                         }
                 )
                 .execute(graph, null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 

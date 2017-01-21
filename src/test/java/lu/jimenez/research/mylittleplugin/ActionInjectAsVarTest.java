@@ -13,14 +13,18 @@ class ActionInjectAsVarTest extends ActionTest {
     @Test
     public void test() {
         initGraph();
+        final int[] counter ={0};
         newTask()
                 .then(injectAsVar("myvar", 1))
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {
                         assertEquals(context.variable("myvar").get(0), 1);
+                        counter[0]++;
+                        context.continueTask();
                     }
                 })
                 .execute(graph, null);
+        assertEquals(1, counter[0]);
         removeGraph();
     }
 
