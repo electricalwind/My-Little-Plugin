@@ -58,4 +58,8 @@ public class MyLittleActions {
         return new ActionExecuteAtWorldAndTime(world, time, then);
     }
 
+    public static Action readUpdatedTimeVar(final String name){
+        return new ActionReadUpdatedTimeVar(name);
+    }
+
 }

@@ -15,5 +15,6 @@ public class MLPActionNames {
     public static String FLIP_VAR_AND_RESULT = "flipVarAndResult";
     public static String CHECK_FOR_FUTURE = "checkForFuture";
     public static String EXECUTE_AT_WORLD_AND_TIME = "executeAtWorldAndTime";
+    public static String READ_UPDATED_TIME_VAR = "readUpdatedTimeVar";
 
 }

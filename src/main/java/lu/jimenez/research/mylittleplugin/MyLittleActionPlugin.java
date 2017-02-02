@@ -172,6 +172,17 @@ public class MyLittleActionPlugin implements Plugin {
                     }
                 });
 
+        //Read Updated Time Var
+        graph.actionRegistry()
+                .declaration(MLPActionNames.READ_UPDATED_TIME_VAR)
+                .setParams(Type.STRING)
+                .setDescription("Put the content of a var in the current result, if the var contains nodes they are put to the current context time")
+                .setFactory(new ActionFactory() {
+                    public Action create(Object[] params) {
+                        return readUpdatedTimeVar((String)params[0]);
+                    }
+                });
+
     }
 
     public void stop() {
