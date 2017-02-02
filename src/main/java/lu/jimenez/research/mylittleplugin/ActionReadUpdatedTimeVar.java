@@ -93,9 +93,6 @@ public class ActionReadUpdatedTimeVar implements Action {
                 ctx.continueWith(previous);
             }
         });
-
-        ctx.continueWith(varResult);
-
     }
 
 
