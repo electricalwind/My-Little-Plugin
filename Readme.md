@@ -45,7 +45,8 @@ Currently offered actions are:
 * [Keep first result](doc/KeepFirstResult.md)
 * [Flip Vars](doc/FlipVars.md)
 * [Flip Var And Result](doc/FlipVarAndResult.md)
-
+* [Read Updated Time Var](doc/ReadUpdatedTimeVar.md)
+ 
 ### Can I create my own action?
 
 Of course, feel free to take a look at the project to see how to implement your own action and see how to integrate them to your project.
