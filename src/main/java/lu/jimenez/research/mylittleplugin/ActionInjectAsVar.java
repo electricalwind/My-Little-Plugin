@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,13 +24,13 @@ public class ActionInjectAsVar implements Action {
     private final String _variable;
     private final Object _toInject;
 
-    ActionInjectAsVar(final String p_variable, final Object toInject){
+    ActionInjectAsVar(final String p_variable, final Object toInject) {
         _variable = p_variable;
         _toInject = toInject;
     }
 
     public void eval(final TaskContext taskContext) {
-        taskContext.defineVariable(_variable,_toInject);
+        taskContext.defineVariable(_variable, _toInject);
         taskContext.continueTask();
     }
 
@@ -39,7 +39,7 @@ public class ActionInjectAsVar implements Action {
     }
 
     @Override
-    public String toString(){
-        return "inject("+_toInject.toString()+","+_variable+")";
+    public String toString() {
+        return "inject(" + _toInject.toString() + "," + _variable + ")";
     }
 }

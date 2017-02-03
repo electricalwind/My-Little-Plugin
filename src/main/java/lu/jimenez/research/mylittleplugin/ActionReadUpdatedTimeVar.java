@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -99,7 +99,7 @@ public class ActionReadUpdatedTimeVar implements Action {
     public void serialize(StringBuilder builder) {
         builder.append(MLPActionNames.READ_UPDATED_TIME_VAR);
         builder.append(Constants.TASK_PARAM_OPEN);
-        TaskHelper.serializeString(_origin, builder,true);
+        TaskHelper.serializeString(_origin, builder, true);
         builder.append(Constants.TASK_PARAM_CLOSE);
     }
 

@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -30,7 +30,7 @@ public class ActionIfEmptyThen extends CF_Action {
 
     private org.mwg.task.Task _action;
 
-    ActionIfEmptyThen(final Task action){
+    ActionIfEmptyThen(final Task action) {
         super();
         this._action = action;
     }
@@ -55,13 +55,13 @@ public class ActionIfEmptyThen extends CF_Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        if(taskContext.result().size() == 0){
+        if (taskContext.result().size() == 0) {
             _action.executeFrom(taskContext, taskContext.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
                 public void on(TaskResult res) {
                     taskContext.continueWith(res);
                 }
             });
-        }else taskContext.continueTask();
+        } else taskContext.continueTask();
     }
 
 }

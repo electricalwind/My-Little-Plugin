@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,12 +24,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mwg.internal.task.CoreActions.*;
 import static org.mwg.task.Tasks.newTask;
 
-class ActionIfEmptyThenTest extends ActionTest{
+class ActionIfEmptyThenTest extends ActionTest {
 
     @Test
-    public void test(){
+    public void test() {
         initGraph();
-        final int[] counter ={0};
+        final int[] counter = {0};
         newTask()
                 .then(declareVar("myvar"))
                 .then(ifEmptyThen(
@@ -45,11 +45,10 @@ class ActionIfEmptyThenTest extends ActionTest{
                         counter[0]++;
                         context.continueTask();
                     }
-                }).execute(graph,null);
+                }).execute(graph, null);
         assertEquals(1, counter[0]);
         removeGraph();
     }
-
 
 
 }

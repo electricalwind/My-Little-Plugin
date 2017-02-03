@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,20 +38,20 @@ public class ActionCheckForFuture implements Action {
         while ((node = it.next()) != null) {
             final Node node1 = (Node) node;
             node1.timepoints(
-                    time+1, END_OF_TIME, new Callback<long[]>() {
+                    time + 1, END_OF_TIME, new Callback<long[]>() {
                         public void on(long[] result) {
-                            if(result.length !=0){
-                                bool[0]=false;
+                            if (result.length != 0) {
+                                bool[0] = false;
                                 nodeIds.add(node1.id());
                             }
                         }
                     }
             );
         }
-        if(bool[0]){
+        if (bool[0]) {
             ctx.continueTask();
-        }else{
-            ctx.endTask(ctx.result(),new RuntimeException("Trying to modify the past of Node(s): "+nodeIds ));
+        } else {
+            ctx.endTask(ctx.result(), new RuntimeException("Trying to modify the past of Node(s): " + nodeIds));
         }
     }
 
@@ -63,7 +63,7 @@ public class ActionCheckForFuture implements Action {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         final StringBuilder res = new StringBuilder();
         serialize(res);
         return res.toString();
