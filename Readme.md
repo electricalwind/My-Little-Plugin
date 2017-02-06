@@ -4,7 +4,7 @@
 
 <img src="doc/img/logo.jpg" width="200px" /><img src="doc/img/4.png" width="150px"/><img src="doc/img/logo.png" width="250px" />
 
-![MWDB-version](https://img.shields.io/badge/MWDB--version-11--SNAPSHOT-green.svg)
+![Greycat-version](https://img.shields.io/badge/Greycat--version-12--SNAPSHOT-green.svg)
 
 ![version](https://img.shields.io/badge/version-1.0-blue.svg)
 
