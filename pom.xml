@@ -23,7 +23,7 @@
 
     <groupId>lu.jimenez.research</groupId>
     <artifactId>my-little-plugin</artifactId>
-    <name>My Little Plugin 4 MWG</name>
+    <name>My Little Plugin 4 Greycat</name>
     <url>https://github.com/electricalwind/My-Little-Plugin</url>
     <version>1.0</version>
     <packaging>jar</packaging>
@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mwg.version>11-SNAPSHOT</mwg.version>
+        <greycat.version>12-SNAPSHOT</greycat.version>
         <header.path>${basedir}/HEADER</header.path>
     </properties>
 
@@ -57,9 +57,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.kevoree.mwg</groupId>
-            <artifactId>core</artifactId>
-            <version>${mwg.version}</version>
+            <groupId>com.datathings</groupId>
+            <artifactId>greycat</artifactId>
+            <version>${greycat.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

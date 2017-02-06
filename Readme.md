@@ -1,6 +1,6 @@
 # My Little Plugin
 
-## For Many World Graph Database 
+## For Greycat
 
 <img src="doc/img/logo.jpg" width="200px" /><img src="doc/img/4.png" width="150px"/><img src="doc/img/logo.png" width="250px" />
 
@@ -8,8 +8,8 @@
 
 ![version](https://img.shields.io/badge/version-1.0-blue.svg)
 
-This library bring additional actions to the [MWDB](https://github.com/kevoree-modeling/mwDB) project. This library is compatible with the latest MWDB api, that will be introduced in the 11th version. 
-Compatibility with previous versions of MWDB api is not supported anymore.
+This library bring additional actions to the [Greycat](https://github.com/datathings/greycat) project. This library is compatible with the latest Greycat api, that will be introduced in the 12th version. 
+Compatibility with previous versions of Greycat (formerly MWDB) api is not supported anymore.
 
 ### Actions?
 
@@ -26,7 +26,7 @@ However, thinking and implementing every possible actions would:
 That's why only basic, i.e., atomic, actions are implemented. 
 
 Yet, users might need more composed actions like Injecting an object as a variable or Putting the result of a get action in a variable instead of in the result. 
-This library aims at providing such actions and will evolves alongside MWDB, i.e.,  some actions might be added as a need for it is express and other removed to be directly integrated within MWDB.
+This library aims at providing such actions and will evolves alongside Greycat, i.e.,  some actions might be added as a need for it is express and other removed to be directly integrated within Greycat.
 
 ### What are those Actions
 
