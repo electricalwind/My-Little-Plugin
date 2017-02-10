@@ -78,4 +78,8 @@ public class MyLittleActions {
         return new ActionReadUpdatedTimeVar(name);
     }
 
+    public static Action traverseDedup(final String name, final String... params) {
+        return new ActionTraverseDedup(name, params);
+    }
+
 }

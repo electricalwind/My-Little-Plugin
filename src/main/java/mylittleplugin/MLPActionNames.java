@@ -31,5 +31,6 @@ public class MLPActionNames {
     public static String CHECK_FOR_FUTURE = "checkForFuture";
     public static String EXECUTE_AT_WORLD_AND_TIME = "executeAtWorldAndTime";
     public static String READ_UPDATED_TIME_VAR = "readUpdatedTimeVar";
+    public static String TRAVERSE_DEDUP = "traverseDedup";
 
 }

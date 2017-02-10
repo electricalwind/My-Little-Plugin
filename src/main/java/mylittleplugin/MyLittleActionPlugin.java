@@ -196,6 +196,22 @@ public class MyLittleActionPlugin implements Plugin {
                     }
                 });
 
+        //Traverse Dedup
+        graph.actionRegistry()
+                .declaration(MLPActionNames.TRAVERSE_DEDUP)
+                .setParams(Type.STRING, Type.STRING_ARRAY)
+                .setDescription("action that traverse but only put one occurence of each node")
+                .setFactory(new ActionFactory() {
+                    public Action create(Object[] params) {
+                        final String[] varargs = (String[]) params[2];
+                        if (varargs != null) {
+                            return MyLittleActions.traverseDedup((String) params[0], varargs);
+                        } else {
+                            return MyLittleActions.traverseDedup((String) params[0]);
+                        }
+                    }
+                });
+
     }
 
     public void stop() {

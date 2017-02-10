@@ -46,6 +46,7 @@ Currently offered actions are:
 * [Flip Vars](doc/FlipVars.md)
 * [Flip Var And Result](doc/FlipVarAndResult.md)
 * [Read Updated Time Var](doc/ReadUpdatedTimeVar.md)
+* [Traverse Deduplicate](doc/TraverseDedup.md)
  
 ### Can I create my own action?
 
