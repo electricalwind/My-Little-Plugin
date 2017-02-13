@@ -1,20 +1,20 @@
-package mylittleplugin;
-
 /**
- * Copyright 2017 The GreyCat Authors.  All rights reserved.
- * <p>
+ * Copyright 2017 Matthieu Jimenez.  All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package mylittleplugin;
+
 
 import greycat.*;
 import greycat.base.BaseNode;
@@ -55,18 +55,25 @@ class ActionTraverseDedup implements Action {
                 if (loop instanceof BaseNode) {
                     final Node casted = (Node) loop;
 
+                    boolean relInde = false;
+                    long[] relation = null;
+                    int relationSize = 0;
+                    List<Long> list = new ArrayList();
+
                     switch (casted.type(flatName)) {
                         case Type.RELATION_INDEXED:
-                            if (_params != null && _params.length > 0) {
-                                RelationIndexed relationIndexed = (RelationIndexed) casted.get(flatName);
-                                long[] relation = relationIndexed.all();
-                                List<Long> list = new ArrayList();
-                                for (int j = 0; j < relation.length; j++) {
+
+                            RelationIndexed relationIndexed = (RelationIndexed) casted.get(flatName);
+                            if (relationIndexed != null) {
+                                relation = relationIndexed.all();
+                                relationSize = relationIndexed.size();
+
+                                for (int j = 0; j < relationSize; j++) {
                                     if (idsFound.add(relation[j])) {
                                         list.add(relation[j]);
                                     }
                                 }
-                                if (relationIndexed != null) {
+                                if (_params != null && _params.length > 0) {
                                     Query query = taskContext.graph().newQuery();
                                     query.setWorld(taskContext.world());
                                     query.setTime(taskContext.time());
@@ -94,22 +101,31 @@ class ActionTraverseDedup implements Action {
                                                     }
                                                 }
                                             }
-
+                                            casted.free();
                                             defer.count();
+
                                         }
                                     });
+                                    break;
                                 } else {
-                                    defer.count();
+                                    relInde = true;
                                 }
+
+                            } else {
                                 casted.free();
+                                defer.count();
+                                break;
                             }
                         case Type.RELATION:
                             if (_params == null || _params.length == 0) {
-                                long[] relation = ((Relation) casted.get(flatName)).all();
-                                List<Long> list = new ArrayList();
-                                for (int j = 0; j < relation.length; j++) {
-                                    if (idsFound.add(relation[j])) {
-                                        list.add(relation[j]);
+                                if (!relInde) {
+                                    Relation rel = (Relation) casted.get(flatName);
+                                    relation = rel.all();
+                                    relationSize = rel.size();
+                                    for (int j = 0; j < relationSize; j++) {
+                                        if (idsFound.add(relation[j])) {
+                                            list.add(relation[j]);
+                                        }
                                     }
                                 }
                                 casted.graph().lookupAll(casted.world(), casted.time(), list.stream().mapToLong(l -> l).toArray(), new Callback<Node[]>() {
@@ -119,10 +135,15 @@ class ActionTraverseDedup implements Action {
                                                 finalResult.add(result[j]);
                                             }
                                         }
+                                        casted.free();
+                                        defer.count();
                                     }
                                 });
+                            } else {
+                                casted.free();
+                                defer.count();
                             }
-                            casted.free();
+
                             break;
                         default:
                             Object resolved = casted.get(flatName);
