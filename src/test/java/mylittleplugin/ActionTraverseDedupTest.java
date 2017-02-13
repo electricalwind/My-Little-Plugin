@@ -59,9 +59,23 @@ class ActionTraverseDedupTest extends ActionTest {
                         ctx.continueTask();
                     }
                 })
+
+                .travelInTime("0")
+                .then(readUpdatedTimeVar("nodes"))
+                .then(traverseDedup("root"))
+                .thenDo(new ActionFunction() {
+                    @Override
+                    public void eval(TaskContext ctx) {
+                        assertEquals(0, ctx.result().size());
+                        counter[0]++;
+                        ctx.continueTask();
+                    }
+                })
+
+
                 .println("everything done :)")
                 .execute(graph, null);
-        assertEquals(2, counter[0]);
+        assertEquals(3, counter[0]);
         removeGraph();
     }
 
@@ -113,9 +127,21 @@ class ActionTraverseDedupTest extends ActionTest {
                         ctx.continueTask();
                     }
                 })
+
+                .travelInTime("0")
+                .then(readUpdatedTimeVar("nodes"))
+                .then(traverseDedup("root"))
+                .thenDo(new ActionFunction() {
+                    @Override
+                    public void eval(TaskContext ctx) {
+                        assertEquals(0, ctx.result().size());
+                        counter[0]++;
+                        ctx.continueTask();
+                    }
+                })
                 .println("everything done :)")
                 .execute(graph, null);
-        assertEquals(2, counter[0]);
+        assertEquals(3, counter[0]);
         removeGraph();
     }
 
@@ -166,9 +192,22 @@ class ActionTraverseDedupTest extends ActionTest {
                         ctx.continueTask();
                     }
                 })
+
+                .travelInTime("0")
+                .then(readUpdatedTimeVar("nodes"))
+                .then(traverseDedup("root"))
+                .thenDo(new ActionFunction() {
+                    @Override
+                    public void eval(TaskContext ctx) {
+                        assertEquals(0, ctx.result().size());
+                        counter[0]++;
+                        ctx.continueTask();
+                    }
+                })
+
                 .println("everything done :)")
                 .execute(graph, null);
-        assertEquals(2, counter[0]);
+        assertEquals(3, counter[0]);
         removeGraph();
     }
 
