@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <greycat.version>1-SNAPSHOT</greycat.version>
+        <greycat.version>1</greycat.version>
         <header.path>${basedir}/HEADER</header.path>
     </properties>
 

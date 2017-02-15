@@ -4,11 +4,11 @@
 
 <img src="doc/img/logo.jpg" width="200px" /><img src="doc/img/4.png" width="150px"/><img src="doc/img/logo.png" width="250px" />
 
-![Greycat-version](https://img.shields.io/badge/Greycat--version-1--SNAPSHOT-green.svg)
+![Greycat-version](https://img.shields.io/badge/Greycat--version-1-green.svg)
 
 ![version](https://img.shields.io/badge/version-1.0-blue.svg)
 
-This library bring additional actions to the [Greycat](https://github.com/datathings/greycat) project. This library is compatible with the latest Greycat api, that will be introduced in the 1st version. 
+This library bring additional actions to the [Greycat](https://github.com/datathings/greycat) project. This library is compatible with the latest Greycat api (v1). 
 Compatibility with previous versions of Greycat (formerly MWDB) api is not supported anymore.
 
 ### Actions?
@@ -18,7 +18,7 @@ Actions are reusable elements hiding low-level, asynchronous task primitives beh
 
 ### Why additional Action?
 
-A great number of action are already implemented and available in mwdb, please refer to the  org.mwg.core.task package of MWDB. 
+A great number of action are already implemented and available in Greycat, please refer to the  greycat.internal.task package of Greycat. 
 However, thinking and implementing every possible actions would: 
 1) be impossible 
 2) drastically increase the size of the project. 
