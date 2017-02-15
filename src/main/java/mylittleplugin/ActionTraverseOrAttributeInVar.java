@@ -19,6 +19,7 @@ import greycat.*;
 import greycat.base.BaseNode;
 import greycat.internal.task.TaskHelper;
 import greycat.plugin.Job;
+import greycat.struct.Buffer;
 import greycat.struct.RelationIndexed;
 
 public class ActionTraverseOrAttributeInVar implements Action {
@@ -121,26 +122,19 @@ public class ActionTraverseOrAttributeInVar implements Action {
         }
     }
 
-    public void serialize(StringBuilder builder) {
-        builder.append(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR);
-        builder.append(Constants.TASK_PARAM_OPEN);
+    public void serialize(Buffer builder) {
+        builder.writeString(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         TaskHelper.serializeString(_name, builder, false);
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         TaskHelper.serializeString(_variable, builder, false);
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         if (_params != null && _params.length > 0) {
-            builder.append(Constants.TASK_PARAM_SEP);
+            builder.writeChar(Constants.TASK_PARAM_SEP);
             TaskHelper.serializeStringParams(_params, builder);
         }
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
 
 
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
     }
 }

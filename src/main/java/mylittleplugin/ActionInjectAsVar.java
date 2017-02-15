@@ -18,6 +18,7 @@ package mylittleplugin;
 
 import greycat.Action;
 import greycat.TaskContext;
+import greycat.struct.Buffer;
 
 public class ActionInjectAsVar implements Action {
 
@@ -34,12 +35,12 @@ public class ActionInjectAsVar implements Action {
         taskContext.continueTask();
     }
 
-    public void serialize(StringBuilder builder) {
+    public void serialize(Buffer builder) {
         throw new RuntimeException("inject as var remote action not managed yet!");
     }
 
     @Override
     public String toString() {
-        return "inject(" + _toInject.toString() + "," + _variable + ")";
+        return "injectAsVar(" + _toInject.toString() + "," + _variable + ")";
     }
 }

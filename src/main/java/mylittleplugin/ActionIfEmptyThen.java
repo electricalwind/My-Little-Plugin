@@ -19,6 +19,7 @@ import greycat.*;
 import greycat.internal.task.CF_Action;
 import greycat.internal.task.CoreTask;
 import greycat.plugin.SchedulerAffinity;
+import greycat.struct.Buffer;
 
 import java.util.Map;
 
@@ -37,17 +38,17 @@ public class ActionIfEmptyThen extends CF_Action {
         return children_tasks;
     }
 
-    public void cf_serialize(StringBuilder builder, Map<Integer, Integer> dagIDS) {
-        builder.append(MLPActionNames.IF_EMPTY_THEN);
-        builder.append(Constants.TASK_PARAM_OPEN);
+    public void cf_serialize(Buffer builder, Map<Integer, Integer> dagIDS) {
+        builder.writeString(MLPActionNames.IF_EMPTY_THEN);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         final CoreTask castedAction = (CoreTask) _action;
         final int castedActionHash = castedAction.hashCode();
         if (dagIDS == null || !dagIDS.containsKey(castedActionHash)) {
             castedAction.serialize(builder, dagIDS);
         } else {
-            builder.append("" + dagIDS.get(castedActionHash));
+            builder.writeString("" + dagIDS.get(castedActionHash));
         }
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
     public void eval(final TaskContext taskContext) {

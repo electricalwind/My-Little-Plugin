@@ -21,6 +21,7 @@ import greycat.base.BaseNode;
 import greycat.internal.CoreDeferCounter;
 import greycat.internal.task.TaskHelper;
 import greycat.plugin.Job;
+import greycat.struct.Buffer;
 
 public class ActionReadUpdatedTimeVar implements Action {
 
@@ -90,17 +91,11 @@ public class ActionReadUpdatedTimeVar implements Action {
     }
 
 
-    public void serialize(StringBuilder builder) {
-        builder.append(MLPActionNames.READ_UPDATED_TIME_VAR);
-        builder.append(Constants.TASK_PARAM_OPEN);
+    public void serialize(Buffer builder) {
+        builder.writeString(MLPActionNames.READ_UPDATED_TIME_VAR);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         TaskHelper.serializeString(_origin, builder, true);
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
-    }
 }

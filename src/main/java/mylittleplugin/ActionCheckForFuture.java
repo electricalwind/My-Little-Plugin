@@ -16,6 +16,7 @@
 package mylittleplugin;
 
 import greycat.*;
+import greycat.struct.Buffer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,17 +51,10 @@ public class ActionCheckForFuture implements Action {
         }
     }
 
-    public void serialize(StringBuilder builder) {
-        builder.append(MLPActionNames.CHECK_FOR_FUTURE);
-        builder.append(Constants.TASK_PARAM_OPEN);
-        builder.append(Constants.TASK_PARAM_CLOSE);
+    public void serialize(Buffer builder) {
+        builder.writeString(MLPActionNames.CHECK_FOR_FUTURE);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
 
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
     }
 }

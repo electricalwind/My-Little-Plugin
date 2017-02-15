@@ -20,12 +20,12 @@ import greycat.*;
 import greycat.base.BaseNode;
 import greycat.internal.task.TaskHelper;
 import greycat.plugin.Job;
+import greycat.struct.Buffer;
 import greycat.struct.Relation;
 import greycat.struct.RelationIndexed;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 
 import static mylittleplugin.MLPActionNames.TRAVERSE_DEDUP;
 
@@ -56,9 +56,9 @@ class ActionTraverseDedup implements Action {
                     final Node casted = (Node) loop;
 
                     boolean relInde = false;
-                    long[] relation = null;
-                    int relationSize = 0;
-                    List<Long> list = new ArrayList();
+                    long[] relation;
+                    int relationSize;
+                    Set<Long> list = new HashSet<>();
 
                     switch (casted.type(flatName)) {
                         case Type.RELATION_INDEXED:
@@ -172,23 +172,17 @@ class ActionTraverseDedup implements Action {
     }
 
     @Override
-    public void serialize(StringBuilder builder) {
+    public void serialize(Buffer builder) {
 
-        builder.append(TRAVERSE_DEDUP);
-        builder.append(Constants.TASK_PARAM_OPEN);
-        builder.append(_name);
+        builder.writeString(TRAVERSE_DEDUP);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
+        TaskHelper.serializeString(_name,builder,true);
         if (_params != null && _params.length > 0) {
-            builder.append(Constants.TASK_PARAM_SEP);
+            builder.writeChar(Constants.TASK_PARAM_SEP);
             TaskHelper.serializeStringParams(_params, builder);
         }
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
-    }
 
 }

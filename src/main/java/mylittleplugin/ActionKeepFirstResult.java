@@ -19,6 +19,7 @@ package mylittleplugin;
 import greycat.Action;
 import greycat.Constants;
 import greycat.TaskContext;
+import greycat.struct.Buffer;
 
 public class ActionKeepFirstResult implements Action {
     ActionKeepFirstResult() {
@@ -31,16 +32,10 @@ public class ActionKeepFirstResult implements Action {
         else taskContext.continueTask();
     }
 
-    public void serialize(StringBuilder builder) {
-        builder.append(MLPActionNames.KEEP_FIRST_RESULT);
-        builder.append(Constants.TASK_PARAM_OPEN);
-        builder.append(Constants.TASK_PARAM_CLOSE);
+    public void serialize(Buffer builder) {
+        builder.writeString(MLPActionNames.KEEP_FIRST_RESULT);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
-    }
 }

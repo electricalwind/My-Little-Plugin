@@ -20,6 +20,7 @@ import greycat.Action;
 import greycat.Constants;
 import greycat.TaskContext;
 import greycat.internal.task.TaskHelper;
+import greycat.struct.Buffer;
 
 public class ActionFlipVars implements Action {
 
@@ -39,19 +40,13 @@ public class ActionFlipVars implements Action {
         ctx.continueTask();
     }
 
-    public void serialize(StringBuilder builder) {
-        builder.append(MLPActionNames.FLIP_VARS);
-        builder.append(Constants.TASK_PARAM_OPEN);
+    public void serialize(Buffer builder) {
+        builder.writeString(MLPActionNames.FLIP_VARS);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         TaskHelper.serializeString(_var1, builder, false);
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         TaskHelper.serializeString(_var2, builder, false);
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
-    }
 }

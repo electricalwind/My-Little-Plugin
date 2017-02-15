@@ -21,6 +21,7 @@ import greycat.internal.task.CF_Action;
 import greycat.internal.task.CoreTask;
 import greycat.internal.task.TaskHelper;
 import greycat.plugin.SchedulerAffinity;
+import greycat.struct.Buffer;
 
 import java.util.Map;
 
@@ -44,22 +45,22 @@ public class ActionExecuteAtWorldAndTime extends CF_Action {
         return children_tasks;
     }
 
-    public void cf_serialize(StringBuilder builder, Map<Integer, Integer> dagIDS) {
-        builder.append(MLPActionNames.EXECUTE_AT_WORLD_AND_TIME);
+    public void cf_serialize(Buffer builder, Map<Integer, Integer> dagIDS) {
+        builder.writeString(MLPActionNames.EXECUTE_AT_WORLD_AND_TIME);
 
-        builder.append(Constants.TASK_PARAM_OPEN);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         TaskHelper.serializeString(_world, builder, true);
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         TaskHelper.serializeString(_time, builder, true);
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         final CoreTask castedAction = (CoreTask) _task;
         final int castedActionHash = castedAction.hashCode();
         if (dagIDS == null || !dagIDS.containsKey(castedActionHash)) {
             castedAction.serialize(builder, dagIDS);
         } else {
-            builder.append("" + dagIDS.get(castedActionHash));
+            builder.writeString("" + dagIDS.get(castedActionHash));
         }
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
 

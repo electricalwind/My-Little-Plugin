@@ -20,6 +20,7 @@ import greycat.*;
 import greycat.internal.task.CF_Action;
 import greycat.internal.task.CoreTask;
 import greycat.plugin.SchedulerAffinity;
+import greycat.struct.Buffer;
 
 import java.util.Map;
 
@@ -47,25 +48,25 @@ public class ActionIfEmptyThenElse extends CF_Action {
         return children_tasks;
     }
 
-    public void cf_serialize(StringBuilder builder, Map<Integer, Integer> dagIDS) {
-        builder.append(MLPActionNames.IF_EMPTY_THEN_ELSE);
-        builder.append(Constants.TASK_PARAM_OPEN);
+    public void cf_serialize(Buffer builder, Map<Integer, Integer> dagIDS) {
+        builder.writeString(MLPActionNames.IF_EMPTY_THEN_ELSE);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         final CoreTask castedActionT = (CoreTask) _actionThen;
         final int castedActionHashT = castedActionT.hashCode();
         if (dagIDS == null || !dagIDS.containsKey(castedActionHashT)) {
             castedActionT.serialize(builder, dagIDS);
         } else {
-            builder.append("" + dagIDS.get(castedActionHashT));
+            builder.writeString("" + dagIDS.get(castedActionHashT));
         }
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         final CoreTask castedActionE = (CoreTask) _actionElse;
         final int castedActionHashE = castedActionE.hashCode();
         if (dagIDS == null || !dagIDS.containsKey(castedActionHashE)) {
             castedActionE.serialize(builder, dagIDS);
         } else {
-            builder.append("" + dagIDS.get(castedActionHashE));
+            builder.writeString("" + dagIDS.get(castedActionHashE));
         }
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
     public void eval(final TaskContext taskContext) {

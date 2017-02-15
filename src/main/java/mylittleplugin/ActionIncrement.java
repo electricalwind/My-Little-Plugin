@@ -20,6 +20,7 @@ import greycat.Action;
 import greycat.Constants;
 import greycat.TaskContext;
 import greycat.internal.task.TaskHelper;
+import greycat.struct.Buffer;
 
 public class ActionIncrement implements Action {
 
@@ -38,19 +39,13 @@ public class ActionIncrement implements Action {
         taskContext.continueTask();
     }
 
-    public void serialize(StringBuilder builder) {
-        builder.append(MLPActionNames.COUNT);
-        builder.append(Constants.TASK_PARAM_OPEN);
+    public void serialize(Buffer builder) {
+        builder.writeString(MLPActionNames.COUNT);
+        builder.writeChar(Constants.TASK_PARAM_OPEN);
         TaskHelper.serializeString(_variable, builder, false);
-        builder.append(Constants.TASK_PARAM_SEP);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
         TaskHelper.serializeString(Integer.toString(_increment), builder, false);
-        builder.append(Constants.TASK_PARAM_CLOSE);
+        builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder res = new StringBuilder();
-        serialize(res);
-        return res.toString();
-    }
 }
