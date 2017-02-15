@@ -4,12 +4,13 @@
 
 <img src="doc/img/logo.jpg" width="200px" /><img src="doc/img/4.png" width="150px"/><img src="doc/img/logo.png" width="250px" />
 
-![Greycat-version](https://img.shields.io/badge/Greycat--version-1-green.svg)
+![Greycat-version](https://img.shields.io/badge/Greycat--version-2--SNAPSHOT-green.svg)
 
-![version](https://img.shields.io/badge/version-1.0-blue.svg)
+![version](https://img.shields.io/badge/version-2--SNAPSHOT-blue.svg)
 
-This library bring additional actions to the [Greycat](https://github.com/datathings/greycat) project. This library is compatible with the latest Greycat api (v1). 
+This library bring additional actions to the [Greycat](https://github.com/datathings/greycat) project. This library is compatible with the latest Greycat api (2-SNAPSHOT). 
 Compatibility with previous versions of Greycat (formerly MWDB) api is not supported anymore.
+The release of the plugin will follow the release of Greycat.
 
 ### Actions?
 
