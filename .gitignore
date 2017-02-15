@@ -72,3 +72,5 @@ src/main/resources/
 /.idea/workspace.xml
 /.idea/encodings.xml
 /additionalActionPluginMWDB.iml
+
+my-little-plugin.iml
