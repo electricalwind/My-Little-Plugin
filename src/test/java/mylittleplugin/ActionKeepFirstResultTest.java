@@ -46,6 +46,8 @@ class ActionKeepFirstResultTest extends ActionTest {
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {
                         assertEquals(context.result().size(), 1);
+                        assertEquals(1,context.resultAsNodes().get(0).id());
+                        assertEquals("n0",context.resultAsNodes().get(0).get("name"));
                         counter[0]++;
                         context.continueTask();
                     }

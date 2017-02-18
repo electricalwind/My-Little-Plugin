@@ -16,9 +16,7 @@
 package mylittleplugin;
 
 
-import greycat.Action;
-import greycat.Constants;
-import greycat.TaskContext;
+import greycat.*;
 import greycat.struct.Buffer;
 
 public class ActionKeepFirstResult implements Action {
@@ -27,9 +25,15 @@ public class ActionKeepFirstResult implements Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        if (taskContext.result().size() > 0)
-            taskContext.continueWith(taskContext.wrap(taskContext.result().get(0)));
-        else taskContext.continueTask();
+        if (taskContext.result().size() > 0) {
+            Object resultToKeep = taskContext.result().get(0);
+            if (resultToKeep instanceof Node){
+                taskContext.continueWith(taskContext.wrapClone(resultToKeep));
+            }
+            else {
+                taskContext.continueWith(taskContext.wrap(resultToKeep));
+            }
+        } else taskContext.continueTask();
     }
 
     public void serialize(Buffer builder) {
