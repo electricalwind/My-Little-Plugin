@@ -25,7 +25,7 @@
     <artifactId>my-little-plugin</artifactId>
     <name>My Little Plugin 4 Greycat</name>
     <url>https://github.com/electricalwind/My-Little-Plugin</url>
-    <version>2</version>
+    <version>3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <greycat.version>2</greycat.version>
+        <greycat.version>3-SNAPSHOT</greycat.version>
         <header.path>${basedir}/HEADER</header.path>
     </properties>
 
