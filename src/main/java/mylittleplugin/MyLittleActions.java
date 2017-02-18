@@ -18,6 +18,21 @@ package mylittleplugin;
 
 import greycat.Action;
 import greycat.Task;
+import mylittleplugin.cf.ActionIfEmptyThen;
+import mylittleplugin.cf.ActionIfEmptyThenElse;
+import mylittleplugin.cf.ActionIfNotEmptyThen;
+import mylittleplugin.cf.ActionIfNotEmptyThenElse;
+import mylittleplugin.helper.ActionCount;
+import mylittleplugin.helper.ActionIncrement;
+import mylittleplugin.traverse.ActionKeepFirstResult;
+import mylittleplugin.traverse.ActionTraverseDedup;
+import mylittleplugin.traverse.ActionTraverseOrAttributeInVar;
+import mylittleplugin.var.ActionFlipVarAndResult;
+import mylittleplugin.var.ActionFlipVars;
+import mylittleplugin.var.ActionInjectAsVar;
+import mylittleplugin.worldtime.ActionCheckForFuture;
+import mylittleplugin.worldtime.ActionExecuteAtWorldAndTime;
+import mylittleplugin.worldtime.ActionReadUpdatedTimeVar;
 
 public class MyLittleActions {
 

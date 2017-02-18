@@ -13,38 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
-
+package mylittleplugin.var;
 
 import greycat.Action;
 import greycat.Constants;
 import greycat.TaskContext;
+import greycat.TaskResult;
 import greycat.internal.task.TaskHelper;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
-public class ActionIncrement implements Action {
+public class ActionFlipVarAndResult implements Action {
+    private final String _var;
 
-    private final String _variable;
-    private final int _increment;
 
-    ActionIncrement(final String p_variable, final int p_increment) {
-        super();
-        _variable = p_variable;
-        _increment = p_increment;
+    public ActionFlipVarAndResult(final String p_var) {
+        this._var = p_var;
     }
 
-    public void eval(final TaskContext taskContext) {
-        int currentValue = (Integer) taskContext.variable(_variable).get(0);
-        taskContext.setVariable(_variable, currentValue + _increment);
-        taskContext.continueTask();
+    public void eval(TaskContext ctx) {
+        TaskResult value1 = ctx.variable(_var);
+        TaskResult value2 = ctx.result();
+        ctx.setVariable(_var, value2);
+        ctx.continueWith(value1);
     }
 
     public void serialize(Buffer builder) {
-        builder.writeString(MLPActionNames.COUNT);
+        builder.writeString(MLPActionNames.FLIP_VAR_AND_RESULT);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
-        TaskHelper.serializeString(_variable, builder, false);
-        builder.writeChar(Constants.TASK_PARAM_SEP);
-        TaskHelper.serializeString(Integer.toString(_increment), builder, false);
+        TaskHelper.serializeString(_var, builder, false);
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 

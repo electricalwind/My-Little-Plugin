@@ -13,32 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
+package mylittleplugin.helper;
 
 
-import greycat.*;
+import greycat.Action;
+import greycat.Constants;
+import greycat.TaskContext;
+import greycat.internal.task.TaskHelper;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
-public class ActionKeepFirstResult implements Action {
-    ActionKeepFirstResult() {
+public class ActionIncrement implements Action {
+
+    private final String _variable;
+    private final int _increment;
+
+    public ActionIncrement(final String p_variable, final int p_increment) {
         super();
+        _variable = p_variable;
+        _increment = p_increment;
     }
 
     public void eval(final TaskContext taskContext) {
-        if (taskContext.result().size() > 0) {
-            Object resultToKeep = taskContext.result().get(0);
-            if (resultToKeep instanceof Node){
-                taskContext.continueWith(taskContext.wrapClone(resultToKeep));
-            }
-            else {
-                taskContext.continueWith(taskContext.wrap(resultToKeep));
-            }
-        } else taskContext.continueTask();
+        int currentValue = (Integer) taskContext.variable(_variable).get(0);
+        taskContext.setVariable(_variable, currentValue + _increment);
+        taskContext.continueTask();
     }
 
     public void serialize(Buffer builder) {
-        builder.writeString(MLPActionNames.KEEP_FIRST_RESULT);
+        builder.writeString(MLPActionNames.COUNT);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
+        TaskHelper.serializeString(_variable, builder, false);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
+        TaskHelper.serializeString(Integer.toString(_increment), builder, false);
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 

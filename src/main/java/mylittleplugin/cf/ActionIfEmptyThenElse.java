@@ -13,21 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
+package mylittleplugin.cf;
+
 
 import greycat.*;
 import greycat.internal.task.CF_Action;
 import greycat.internal.task.CoreTask;
 import greycat.plugin.SchedulerAffinity;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
 import java.util.Map;
 
-public class ActionIfNotEmptyThenElse extends CF_Action {
+public class ActionIfEmptyThenElse extends CF_Action {
+
     private Task _actionThen;
     private Task _actionElse;
 
-    ActionIfNotEmptyThenElse(final Task actionThen, final Task actionElse) {
+    public ActionIfEmptyThenElse(final Task actionThen, final Task actionElse) {
         super();
         if (actionThen == null) {
             throw new RuntimeException("thenSub should not be null");
@@ -47,7 +50,7 @@ public class ActionIfNotEmptyThenElse extends CF_Action {
     }
 
     public void cf_serialize(Buffer builder, Map<Integer, Integer> dagIDS) {
-        builder.writeString(MLPActionNames.IF_NOT_EMPTY_THEN_ELSE);
+        builder.writeString(MLPActionNames.IF_EMPTY_THEN_ELSE);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
         final CoreTask castedActionT = (CoreTask) _actionThen;
         final int castedActionHashT = castedActionT.hashCode();
@@ -68,7 +71,7 @@ public class ActionIfNotEmptyThenElse extends CF_Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        if (taskContext.result().size() != 0) {
+        if (taskContext.result().size() == 0) {
             _actionThen.executeFrom(taskContext, taskContext.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
                 public void on(TaskResult res) {
                     taskContext.continueWith(res);

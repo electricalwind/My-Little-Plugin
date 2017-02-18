@@ -13,34 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
+package mylittleplugin.var;
+
 
 import greycat.Action;
 import greycat.Constants;
 import greycat.TaskContext;
-import greycat.TaskResult;
 import greycat.internal.task.TaskHelper;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
-public class ActionFlipVarAndResult implements Action {
-    private final String _var;
+public class ActionFlipVars implements Action {
 
+    private final String _var1;
+    private final String _var2;
 
-    public ActionFlipVarAndResult(final String p_var) {
-        this._var = p_var;
+    public ActionFlipVars(final String p_var1, final String p_var2) {
+        this._var1 = p_var1;
+        this._var2 = p_var2;
     }
 
     public void eval(TaskContext ctx) {
-        TaskResult value1 = ctx.variable(_var);
-        TaskResult value2 = ctx.result();
-        ctx.setVariable(_var, value2);
-        ctx.continueWith(value1);
+        Object value1 = ctx.variable(_var1);
+        Object value2 = ctx.variable(_var2);
+        ctx.setVariable(_var1, value2);
+        ctx.setVariable(_var2, value1);
+        ctx.continueTask();
     }
 
     public void serialize(Buffer builder) {
-        builder.writeString(MLPActionNames.FLIP_VAR_AND_RESULT);
+        builder.writeString(MLPActionNames.FLIP_VARS);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
-        TaskHelper.serializeString(_var, builder, false);
+        TaskHelper.serializeString(_var1, builder, false);
+        builder.writeChar(Constants.TASK_PARAM_SEP);
+        TaskHelper.serializeString(_var2, builder, false);
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 

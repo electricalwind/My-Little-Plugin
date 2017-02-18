@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
+package mylittleplugin.var;
 
 
 import greycat.Action;
@@ -25,7 +25,7 @@ public class ActionInjectAsVar implements Action {
     private final String _variable;
     private final Object _toInject;
 
-    ActionInjectAsVar(final String p_variable, final Object toInject) {
+    public ActionInjectAsVar(final String p_variable, final Object toInject) {
         _variable = p_variable;
         _toInject = toInject;
     }

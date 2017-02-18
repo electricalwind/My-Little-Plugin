@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
-
+package mylittleplugin.cf;
 
 import greycat.*;
 import greycat.internal.task.CF_Action;
 import greycat.internal.task.CoreTask;
 import greycat.plugin.SchedulerAffinity;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
 import java.util.Map;
 
-public class ActionIfNotEmptyThen extends CF_Action {
+public class ActionIfEmptyThen extends CF_Action {
 
     private Task _action;
 
-    ActionIfNotEmptyThen(final Task action) {
+    public ActionIfEmptyThen(final Task action) {
         super();
         this._action = action;
     }
-
 
     public Task[] children() {
         Task[] children_tasks = new Task[1];
@@ -41,7 +40,7 @@ public class ActionIfNotEmptyThen extends CF_Action {
     }
 
     public void cf_serialize(Buffer builder, Map<Integer, Integer> dagIDS) {
-        builder.writeString(MLPActionNames.IF_NOT_EMPTY_THEN);
+        builder.writeString(MLPActionNames.IF_EMPTY_THEN);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
         final CoreTask castedAction = (CoreTask) _action;
         final int castedActionHash = castedAction.hashCode();
@@ -54,7 +53,7 @@ public class ActionIfNotEmptyThen extends CF_Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        if (taskContext.result().size() != 0) {
+        if (taskContext.result().size() == 0) {
             _action.executeFrom(taskContext, taskContext.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
                 public void on(TaskResult res) {
                     taskContext.continueWith(res);
@@ -64,4 +63,3 @@ public class ActionIfNotEmptyThen extends CF_Action {
     }
 
 }
-

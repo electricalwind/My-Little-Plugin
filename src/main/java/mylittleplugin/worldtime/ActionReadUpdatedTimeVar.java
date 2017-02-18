@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
+package mylittleplugin.worldtime;
 
 
 import greycat.*;
@@ -22,6 +22,7 @@ import greycat.internal.CoreDeferCounter;
 import greycat.internal.task.TaskHelper;
 import greycat.plugin.Job;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
 public class ActionReadUpdatedTimeVar implements Action {
 

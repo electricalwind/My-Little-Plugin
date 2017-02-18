@@ -13,29 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package mylittleplugin;
+package mylittleplugin.traverse;
 
-import greycat.Action;
-import greycat.Constants;
-import greycat.TaskContext;
+
+import greycat.*;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
-public class ActionCount implements Action {
-
-    ActionCount() {
+public class ActionKeepFirstResult implements Action {
+    public ActionKeepFirstResult() {
         super();
     }
 
-    public void eval(TaskContext taskContext) {
-        final int count = taskContext.result().size();
-        taskContext.continueWith(taskContext.wrap(count));
+    public void eval(final TaskContext taskContext) {
+        if (taskContext.result().size() > 0) {
+            Object resultToKeep = taskContext.result().get(0);
+            if (resultToKeep instanceof Node){
+                taskContext.continueWith(taskContext.wrapClone(resultToKeep));
+            }
+            else {
+                taskContext.continueWith(taskContext.wrap(resultToKeep));
+            }
+        } else taskContext.continueTask();
     }
 
     public void serialize(Buffer builder) {
-        builder.writeString(MLPActionNames.COUNT);
+        builder.writeString(MLPActionNames.KEEP_FIRST_RESULT);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
-
 
 }
