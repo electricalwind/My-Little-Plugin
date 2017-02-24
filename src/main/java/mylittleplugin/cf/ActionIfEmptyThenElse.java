@@ -71,7 +71,13 @@ public class ActionIfEmptyThenElse extends CF_Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        if (taskContext.result().size() == 0) {
+        if (taskContext.result() == null) {
+            _actionThen.executeFrom(taskContext, taskContext.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
+                public void on(TaskResult res) {
+                    taskContext.continueWith(res);
+                }
+            });
+        } else if (taskContext.result().size() == 0) {
             _actionThen.executeFrom(taskContext, taskContext.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
                 public void on(TaskResult res) {
                     taskContext.continueWith(res);
