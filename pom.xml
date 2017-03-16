@@ -24,8 +24,8 @@
     <groupId>lu.jimenez.research</groupId>
     <artifactId>my-little-plugin</artifactId>
     <name>My Little Plugin 4 Greycat</name>
-    <url>https://github.com/electricalwind/My-Little-Plugin</url>
-    <version>4-SNAPSHOT</version>
+    <url>https://github.com/greycat-incubator/My-Little-Plugin</url>
+    <version>5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <greycat.version>4-SNAPSHOT</greycat.version>
+        <greycat.version>5-SNAPSHOT</greycat.version>
         <header.path>${basedir}/HEADER</header.path>
     </properties>
 
