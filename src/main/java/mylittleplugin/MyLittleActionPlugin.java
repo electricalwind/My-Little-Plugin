@@ -42,7 +42,7 @@ public class MyLittleActionPlugin implements Plugin {
     public void start(Graph graph) {
         //Count
         graph.actionRegistry()
-                .declaration(MLPActionNames.COUNT)
+                .getOrCreateDeclaration(MLPActionNames.COUNT)
                 .setParams()
                 .setDescription("Count the number of result in the current context and put it as the new result")
                 .setFactory(new ActionFactory() {
@@ -56,7 +56,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Check for future
         graph.actionRegistry()
-                .declaration(MLPActionNames.CHECK_FOR_FUTURE)
+                .getOrCreateDeclaration(MLPActionNames.CHECK_FOR_FUTURE)
                 .setParams()
                 .setDescription("Checks if nodes present in the current context result have modification in the future. If yes an exception is returned.")
                 .setFactory(new ActionFactory() {
@@ -68,7 +68,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Execute At World ANd Time
         graph.actionRegistry()
-                .declaration(MLPActionNames.EXECUTE_AT_WORLD_AND_TIME)
+                .getOrCreateDeclaration(MLPActionNames.EXECUTE_AT_WORLD_AND_TIME)
                 .setParams(Type.STRING, Type.STRING, Type.TASK)
                 .setDescription("execute a given task at a given world and time and then come back to the current time")
                 .setFactory(new ActionFactory() {
@@ -80,7 +80,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //IF empty then
         graph.actionRegistry()
-                .declaration(MLPActionNames.IF_EMPTY_THEN)
+                .getOrCreateDeclaration(MLPActionNames.IF_EMPTY_THEN)
                 .setParams(Type.TASK)
                 .setDescription("launch the given task if the current result is empty")
                 .setFactory(new ActionFactory() {
@@ -92,7 +92,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //If not empty then
         graph.actionRegistry()
-                .declaration(MLPActionNames.IF_NOT_EMPTY_THEN)
+                .getOrCreateDeclaration(MLPActionNames.IF_NOT_EMPTY_THEN)
                 .setParams(Type.TASK)
                 .setDescription("launch the given task if the current result is not empty")
                 .setFactory(new ActionFactory() {
@@ -103,7 +103,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //IF empty then else
         graph.actionRegistry()
-                .declaration(MLPActionNames.IF_EMPTY_THEN_ELSE)
+                .getOrCreateDeclaration(MLPActionNames.IF_EMPTY_THEN_ELSE)
                 .setParams(Type.TASK, Type.TASK)
                 .setDescription("launch the first task if the current result is empty, else launch the second task")
                 .setFactory(new ActionFactory() {
@@ -114,7 +114,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //If not empty then else
         graph.actionRegistry()
-                .declaration(MLPActionNames.IF_NOT_EMPTY_THEN_ELSE)
+                .getOrCreateDeclaration(MLPActionNames.IF_NOT_EMPTY_THEN_ELSE)
                 .setParams(Type.TASK, Type.TASK)
                 .setDescription("launch the first task if the current result is not empty, else launch the second task")
                 .setFactory(new ActionFactory() {
@@ -125,7 +125,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Increment
         graph.actionRegistry()
-                .declaration(MLPActionNames.INCREMENT)
+                .getOrCreateDeclaration(MLPActionNames.INCREMENT)
                 .setParams(Type.STRING, Type.INT)
                 .setDescription("increment the current value of a variable by 1")
                 .setFactory(new ActionFactory() {
@@ -137,7 +137,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Keep First
         graph.actionRegistry()
-                .declaration(MLPActionNames.KEEP_FIRST_RESULT)
+                .getOrCreateDeclaration(MLPActionNames.KEEP_FIRST_RESULT)
                 .setParams()
                 .setDescription("modify the current context result to only keep its first element")
                 .setFactory(new ActionFactory() {
@@ -148,7 +148,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         // TraverseOr Attribute
         graph.actionRegistry()
-                .declaration(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR)
+                .getOrCreateDeclaration(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR)
                 .setParams(Type.STRING, Type.STRING, Type.STRING_ARRAY)
                 .setDescription("store the result of the traverse in a variable")
                 .setFactory(new ActionFactory() {
@@ -164,7 +164,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Flip Vars
         graph.actionRegistry()
-                .declaration(MLPActionNames.FLIP_VARS)
+                .getOrCreateDeclaration(MLPActionNames.FLIP_VARS)
                 .setParams(Type.STRING, Type.STRING)
                 .setDescription("interchange the content of two variable")
                 .setFactory(new ActionFactory() {
@@ -176,7 +176,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Flip Vars
         graph.actionRegistry()
-                .declaration(MLPActionNames.FLIP_VAR_AND_RESULT)
+                .getOrCreateDeclaration(MLPActionNames.FLIP_VAR_AND_RESULT)
                 .setParams(Type.STRING)
                 .setDescription("interchange the content of a variable with the current result")
                 .setFactory(new ActionFactory() {
@@ -187,7 +187,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Read Updated Time Var
         graph.actionRegistry()
-                .declaration(MLPActionNames.READ_UPDATED_TIME_VAR)
+                .getOrCreateDeclaration(MLPActionNames.READ_UPDATED_TIME_VAR)
                 .setParams(Type.STRING)
                 .setDescription("Put the content of a var in the current result, if the var contains nodes they are put to the current context time")
                 .setFactory(new ActionFactory() {
@@ -198,7 +198,7 @@ public class MyLittleActionPlugin implements Plugin {
 
         //Traverse Dedup
         graph.actionRegistry()
-                .declaration(MLPActionNames.TRAVERSE_DEDUP)
+                .getOrCreateDeclaration(MLPActionNames.TRAVERSE_DEDUP)
                 .setParams(Type.STRING, Type.STRING_ARRAY)
                 .setDescription("action that traverse but only put one occurence of each node")
                 .setFactory(new ActionFactory() {
