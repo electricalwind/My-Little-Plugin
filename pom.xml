@@ -25,7 +25,7 @@
     <artifactId>my-little-plugin</artifactId>
     <name>My Little Plugin 4 Greycat</name>
     <url>https://github.com/greycat-incubator/My-Little-Plugin</url>
-    <version>6-SNAPSHOT</version>
+    <version>6</version>
     <packaging>jar</packaging>
 
     <licenses>
