@@ -16,7 +16,9 @@
 package mylittleplugin.worldtime;
 
 
-import greycat.*;
+import greycat.Constants;
+import greycat.Task;
+import greycat.TaskContext;
 import greycat.internal.task.CF_Action;
 import greycat.internal.task.CoreTask;
 import greycat.internal.task.TaskHelper;
@@ -67,23 +69,16 @@ public class ActionExecuteAtWorldAndTime extends CF_Action {
 
     public void eval(final TaskContext ctx) {
         newTask()
-                .thenDo(new ActionFunction() {
-                    public void eval(TaskContext ctx) {
-                        ctx.setVariable("time", ctx.time());
-                        ctx.setVariable("world", ctx.world());
-                        ctx.continueTask();
-                    }
+                .thenDo(ctx1 -> {
+                    ctx1.setVariable("time", ctx1.time());
+                    ctx1.setVariable("world", ctx1.world());
+                    ctx1.continueTask();
                 })
                 .travelInWorld(_world)
                 .travelInTime(_time)
                 .pipe(_task)
                 .travelInWorld("{{world}}")
                 .travelInTime("{{time}}")
-                .executeFrom(ctx, ctx.result(), SchedulerAffinity.SAME_THREAD, new Callback<TaskResult>() {
-                    public void on(TaskResult res) {
-                        ctx.continueWith(res);
-
-                    }
-                });
+                .executeFrom(ctx, ctx.result(), SchedulerAffinity.SAME_THREAD, res -> ctx.continueWith(res));
     }
 }

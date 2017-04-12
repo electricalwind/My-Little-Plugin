@@ -30,17 +30,15 @@ public class ActionCheckForFuture implements Action {
         Long time = ctx.time();
         Object node;
         final boolean[] bool = {true};
-        final List<Long> nodeIds = new ArrayList<Long>();
+        final List<Long> nodeIds = new ArrayList<>();
         TaskResultIterator it = ctx.resultAsNodes().iterator();
         while ((node = it.next()) != null) {
             final Node node1 = (Node) node;
             node1.timepoints(
-                    time + 1, END_OF_TIME, new Callback<long[]>() {
-                        public void on(long[] result) {
-                            if (result.length != 0) {
-                                bool[0] = false;
-                                nodeIds.add(node1.id());
-                            }
+                    time + 1, END_OF_TIME, result -> {
+                        if (result.length != 0) {
+                            bool[0] = false;
+                            nodeIds.add(node1.id());
                         }
                     }
             );

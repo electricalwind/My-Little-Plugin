@@ -35,7 +35,7 @@ public class ActionIncrement implements Action {
     }
 
     public void eval(final TaskContext taskContext) {
-        int currentValue = (Integer) taskContext.variable(_variable).get(0);
+        int currentValue = taskContext.intVar(_variable);
         taskContext.setVariable(_variable, currentValue + _increment);
         taskContext.continueTask();
     }

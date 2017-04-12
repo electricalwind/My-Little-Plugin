@@ -20,7 +20,6 @@ import greycat.*;
 import greycat.base.BaseNode;
 import greycat.internal.CoreDeferCounter;
 import greycat.internal.task.TaskHelper;
-import greycat.plugin.Job;
 import greycat.struct.Buffer;
 import mylittleplugin.MLPActionNames;
 
@@ -66,29 +65,27 @@ public class ActionReadUpdatedTimeVar implements Action {
         }
         final TaskResult previous = varResult;
         final long time = ctx.time();
-        final DeferCounter defer = new CoreDeferCounter(previous.size());
-        final int previousSize = previous.size();
-        for (int i = 0; i < previousSize; i++) {
-            Object loopObj = previous.get(i);
-            if (loopObj instanceof BaseNode) {
-                final Node castedPreviousNode = (Node) loopObj;
-                final int finalIndex = i;
-                castedPreviousNode.travelInTime(time, new Callback<Node>() {
-                    public void on(Node result) {
+        if (previous == null) {
+            ctx.endTask(ctx.result(), new RuntimeException("Unable to read var"));
+        } else {
+            final int previousSize = previous.size();
+            final DeferCounter defer = new CoreDeferCounter(previousSize);
+            for (int i = 0; i < previousSize; i++) {
+                Object loopObj = previous.get(i);
+                if (loopObj instanceof BaseNode) {
+                    final Node castedPreviousNode = (Node) loopObj;
+                    final int finalIndex = i;
+                    castedPreviousNode.travelInTime(time, result -> {
                         castedPreviousNode.free();
                         previous.set(finalIndex, result);
                         defer.count();
-                    }
-                });
-            } else {
-                defer.count();
+                    });
+                } else {
+                    defer.count();
+                }
             }
+            defer.then(() -> ctx.continueWith(previous));
         }
-        defer.then(new Job() {
-            public void run() {
-                ctx.continueWith(previous);
-            }
-        });
     }
 
 
