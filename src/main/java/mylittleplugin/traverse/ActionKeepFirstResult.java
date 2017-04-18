@@ -16,7 +16,10 @@
 package mylittleplugin.traverse;
 
 
-import greycat.*;
+import greycat.Action;
+import greycat.Constants;
+import greycat.Node;
+import greycat.TaskContext;
 import greycat.struct.Buffer;
 import mylittleplugin.MLPActionNames;
 
@@ -41,6 +44,11 @@ public class ActionKeepFirstResult implements Action {
         builder.writeString(MLPActionNames.KEEP_FIRST_RESULT);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
+    }
+
+    @Override
+    public String name() {
+        return MLPActionNames.KEEP_FIRST_RESULT;
     }
 
 }

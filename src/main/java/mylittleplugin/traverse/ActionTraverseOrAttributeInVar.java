@@ -138,4 +138,9 @@ public class ActionTraverseOrAttributeInVar implements Action {
 
 
     }
+
+    @Override
+    public String name() {
+        return null;
+    }
 }

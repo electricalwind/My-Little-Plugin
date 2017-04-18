@@ -23,6 +23,7 @@ import greycat.plugin.Job;
 import greycat.struct.Buffer;
 import greycat.struct.Relation;
 import greycat.struct.RelationIndexed;
+import mylittleplugin.MLPActionNames;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -176,12 +177,17 @@ public class ActionTraverseDedup implements Action {
 
         builder.writeString(TRAVERSE_DEDUP);
         builder.writeChar(Constants.TASK_PARAM_OPEN);
-        TaskHelper.serializeString(_name,builder,true);
+        TaskHelper.serializeString(_name, builder, true);
         if (_params != null && _params.length > 0) {
             builder.writeChar(Constants.TASK_PARAM_SEP);
             TaskHelper.serializeStringParams(_params, builder);
         }
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
+    }
+
+    @Override
+    public String name() {
+        return MLPActionNames.TRAVERSE_DEDUP;
     }
 
 

@@ -81,4 +81,9 @@ public class ActionExecuteAtWorldAndTime extends CF_Action {
                 .travelInTime("{{time}}")
                 .executeFrom(ctx, ctx.result(), SchedulerAffinity.SAME_THREAD, res -> ctx.continueWith(res));
     }
+
+    @Override
+    public String name() {
+        return MLPActionNames.EXECUTE_AT_WORLD_AND_TIME;
+    }
 }

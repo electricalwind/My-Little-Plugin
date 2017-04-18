@@ -19,6 +19,7 @@ package mylittleplugin.var;
 import greycat.Action;
 import greycat.TaskContext;
 import greycat.struct.Buffer;
+import mylittleplugin.MLPActionNames;
 
 public class ActionInjectAsVar implements Action {
 
@@ -37,6 +38,11 @@ public class ActionInjectAsVar implements Action {
 
     public void serialize(Buffer builder) {
         throw new RuntimeException("inject as var remote action not managed yet!");
+    }
+
+    @Override
+    public String name() {
+        return MLPActionNames.INJECT_AS_VAR;
     }
 
     @Override

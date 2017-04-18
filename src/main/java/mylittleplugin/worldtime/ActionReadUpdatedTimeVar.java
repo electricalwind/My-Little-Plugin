@@ -96,4 +96,9 @@ public class ActionReadUpdatedTimeVar implements Action {
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
+    @Override
+    public String name() {
+        return MLPActionNames.READ_UPDATED_TIME_VAR;
+    }
+
 }

@@ -38,5 +38,10 @@ public class ActionCount implements Action {
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
+    @Override
+    public String name() {
+        return MLPActionNames.COUNT;
+    }
+
 
 }

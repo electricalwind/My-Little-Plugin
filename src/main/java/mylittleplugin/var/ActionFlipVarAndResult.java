@@ -45,4 +45,9 @@ public class ActionFlipVarAndResult implements Action {
         builder.writeChar(Constants.TASK_PARAM_CLOSE);
     }
 
+    @Override
+    public String name() {
+        return MLPActionNames.FLIP_VAR_AND_RESULT;
+    }
+
 }

@@ -64,5 +64,10 @@ public class ActionIfNotEmptyThen extends CF_Action {
         } else taskContext.continueTask();
     }
 
+    @Override
+    public String name() {
+        return MLPActionNames.IF_NOT_EMPTY_THEN;
+    }
+
 }
 

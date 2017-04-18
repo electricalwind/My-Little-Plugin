@@ -82,4 +82,9 @@ public class ActionIfNotEmptyThenElse extends CF_Action {
                 }
             });
     }
+
+    @Override
+    public String name() {
+        return MLPActionNames.IF_NOT_EMPTY_THEN_ELSE;
+    }
 }
