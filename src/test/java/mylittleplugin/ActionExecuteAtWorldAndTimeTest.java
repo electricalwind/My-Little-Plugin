@@ -35,14 +35,14 @@ class ActionExecuteAtWorldAndTimeTest extends ActionTest {
                                 .createNode()
                                 .setAttribute("name", Type.STRING, "newNode")
                                 .defineAsVar("newNode")
-                                .readGlobalIndex("roots")
-                                .addVarToRelation("children", "newNode")
+                                .readIndex("roots")
+                                .addVarTo("children", "newNode")
                         )
                 )
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext ctx) {
                         assertEquals(10, ctx.time());
-                        ctx.resultAsNodes().get(0).relation("children", new Callback<Node[]>() {
+                        ctx.resultAsNodes().get(0).traverse("children", new Callback<Node[]>() {
                             public void on(Node[] result) {
                                 assertEquals(3, result.length);
                             }
@@ -52,7 +52,7 @@ class ActionExecuteAtWorldAndTimeTest extends ActionTest {
                     }
                 })
                 .travelInTime("0")
-                .readGlobalIndex("roots")
+                .readIndex("roots")
                 .traverse("children")
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext ctx) {
@@ -62,7 +62,7 @@ class ActionExecuteAtWorldAndTimeTest extends ActionTest {
                     }
                 })
                 .travelInTime("2")
-                .readGlobalIndex("roots")
+                .readIndex("roots")
                 .traverse("children")
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext ctx) {

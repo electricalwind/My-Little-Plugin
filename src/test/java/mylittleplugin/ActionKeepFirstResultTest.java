@@ -20,7 +20,7 @@ import greycat.TaskContext;
 import org.junit.jupiter.api.Test;
 
 import static greycat.Tasks.newTask;
-import static greycat.internal.task.CoreActions.readGlobalIndex;
+import static greycat.internal.task.CoreActions.readIndex;
 import static greycat.internal.task.CoreActions.traverse;
 import static mylittleplugin.MyLittleActions.keepFirstResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,7 +33,7 @@ class ActionKeepFirstResultTest extends ActionTest {
         initGraph();
         final int[] counter = {0};
         newTask()
-                .then(readGlobalIndex("nodes"))
+                .then(readIndex("nodes"))
                 .then(traverse("children"))
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {

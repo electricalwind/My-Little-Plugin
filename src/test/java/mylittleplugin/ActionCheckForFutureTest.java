@@ -34,7 +34,7 @@ class ActionCheckForFutureTest extends ActionTest {
         initGraph();
         newTask()
                 .travelInTime("4")
-                .readGlobalIndex("roots")
+                .readIndex("roots")
                 .setAttribute("modify", Type.BOOL, "true")
                 .execute(graph, null);
     }
@@ -52,7 +52,7 @@ class ActionCheckForFutureTest extends ActionTest {
         final int[] count = {0};
         newTask()
                 .travelInTime("5")
-                .readGlobalIndex("roots")
+                .readIndex("roots")
                 .then(checkForFuture())
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext ctx) {
@@ -72,7 +72,7 @@ class ActionCheckForFutureTest extends ActionTest {
         final int[] count = {0};
         newTask()
                 .travelInTime("3")
-                .readGlobalIndex("roots")
+                .readIndex("roots")
                 .then(checkForFuture())
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext ctx) {
@@ -92,7 +92,7 @@ class ActionCheckForFutureTest extends ActionTest {
         final int[] count = {0};
         newTask()
                 .travelInTime("3")
-                .readGlobalIndex("nodes")
+                .readIndex("nodes")
                 .then(checkForFuture())
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext ctx) {

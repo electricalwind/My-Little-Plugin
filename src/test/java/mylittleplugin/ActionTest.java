@@ -50,19 +50,22 @@ public abstract class ActionTest {
                 root.addToRelation("children", n1);
 
                 //create some index
-                selfPointer.graph.index(0, BEGINNING_OF_TIME, "roots", new Callback<NodeIndex>() {
+                selfPointer.graph.declareIndex(0, "roots", new Callback<NodeIndex>() {
+                    @Override
                     public void on(NodeIndex rootsIndex) {
-                        rootsIndex.addToIndex(root, "name");
+                        rootsIndex.update(root);
+                        // rootsIndex.free();
                     }
-                });
-                selfPointer.graph.index(0, BEGINNING_OF_TIME, "nodes", new Callback<NodeIndex>() {
-
+                }, "name");
+                selfPointer.graph.declareIndex(0, "nodes", new Callback<NodeIndex>() {
+                    @Override
                     public void on(NodeIndex nodesIndex) {
-                        nodesIndex.addToIndex(n0, "name");
-                        nodesIndex.addToIndex(n1, "name");
-                        nodesIndex.addToIndex(root, "name");
+                        nodesIndex.update(n0);
+                        nodesIndex.update(n1);
+                        nodesIndex.update(root);
+                        // nodesIndex.free();
                     }
-                });
+                }, "name");
 
             }
         });
@@ -86,23 +89,33 @@ public abstract class ActionTest {
 
                 final Node root = selfPointer.graph.newNode(0, BEGINNING_OF_TIME);
                 root.set("name", Type.STRING, "root");
-                root.addToRelation("children", n0, "name");
-                root.addToRelation("children", n1, "name");
+                Index index = (Index) root.getOrCreate("children", Type.INDEX);
+                index.declareAttributes(new Callback() {
+                    @Override
+                    public void on(Object result) {
+
+                    }
+                }, "name");
+                index.update(n0);
+                index.update(n1);
 
                 //create some index
-                selfPointer.graph.index(0, BEGINNING_OF_TIME, "roots", new Callback<NodeIndex>() {
+                selfPointer.graph.declareIndex(0, "roots", new Callback<NodeIndex>() {
+                    @Override
                     public void on(NodeIndex rootsIndex) {
-                        rootsIndex.addToIndex(root, "name");
+                        rootsIndex.update(root);
+                        // rootsIndex.free();
                     }
-                });
-                selfPointer.graph.index(0, BEGINNING_OF_TIME, "nodes", new Callback<NodeIndex>() {
-
+                }, "name");
+                selfPointer.graph.declareIndex(0, "nodes", new Callback<NodeIndex>() {
+                    @Override
                     public void on(NodeIndex nodesIndex) {
-                        nodesIndex.addToIndex(n0, "name");
-                        nodesIndex.addToIndex(n1, "name");
-                        nodesIndex.addToIndex(root, "name");
+                        nodesIndex.update(n0);
+                        nodesIndex.update(n1);
+                        nodesIndex.update(root);
+                        // nodesIndex.free();
                     }
-                });
+                }, "name");
             }
         });
     }

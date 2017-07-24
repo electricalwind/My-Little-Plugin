@@ -25,8 +25,6 @@ import mylittleplugin.cf.ActionIfNotEmptyThenElse;
 import mylittleplugin.helper.ActionCount;
 import mylittleplugin.helper.ActionIncrement;
 import mylittleplugin.traverse.ActionKeepFirstResult;
-import mylittleplugin.traverse.ActionTraverseDedup;
-import mylittleplugin.traverse.ActionTraverseOrAttributeInVar;
 import mylittleplugin.var.ActionFlipVarAndResult;
 import mylittleplugin.var.ActionFlipVars;
 import mylittleplugin.var.ActionInjectAsVar;
@@ -45,9 +43,6 @@ public class MyLittleActions {
         return new ActionCheckForFuture();
     }
 
-    public static Action traverseOrAttributeInVar(final String p_name, final String p_variable, final String... p_params) {
-        return new ActionTraverseOrAttributeInVar(p_name, p_variable, p_params);
-    }
 
     public static Action ifEmptyThen(final Task then) {
         return new ActionIfEmptyThen(then);
@@ -91,10 +86,6 @@ public class MyLittleActions {
 
     public static Action readUpdatedTimeVar(final String name) {
         return new ActionReadUpdatedTimeVar(name);
-    }
-
-    public static Action traverseDedup(final String name, final String... params) {
-        return new ActionTraverseDedup(name, params);
     }
 
 }

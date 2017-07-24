@@ -20,7 +20,6 @@ import greycat.TaskContext;
 import org.junit.jupiter.api.Test;
 
 import static greycat.Tasks.newTask;
-import static greycat.internal.task.CoreActions.readGlobalIndex;
 import static mylittleplugin.MyLittleActions.count;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -51,7 +50,7 @@ class ActionCountTest extends ActionTest {
         initGraph();
         final int[] counter = {0};
         newTask()
-                .then(readGlobalIndex("nodes"))
+                .readIndex("nodes")
                 .then(count())
                 .thenDo(new ActionFunction() {
                     public void eval(TaskContext context) {

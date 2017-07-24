@@ -146,21 +146,6 @@ public class MyLittleActionPlugin implements Plugin {
                     }
                 });
 
-        // TraverseOr Attribute
-        graph.actionRegistry()
-                .getOrCreateDeclaration(MLPActionNames.TRAVERSE_OR_ATTRIBUTE_IN_VAR)
-                .setParams(Type.STRING, Type.STRING, Type.STRING_ARRAY)
-                .setDescription("store the result of the traverse in a variable")
-                .setFactory(new ActionFactory() {
-                    public Action create(Object[] params) {
-                        final String[] varargs = (String[]) params[2];
-                        if (varargs != null) {
-                            return MyLittleActions.traverseOrAttributeInVar((String) params[0], (String) params[1], varargs);
-                        } else {
-                            return MyLittleActions.traverseOrAttributeInVar((String) params[0], (String) params[1]);
-                        }
-                    }
-                });
 
         //Flip Vars
         graph.actionRegistry()
@@ -193,22 +178,6 @@ public class MyLittleActionPlugin implements Plugin {
                 .setFactory(new ActionFactory() {
                     public Action create(Object[] params) {
                         return MyLittleActions.readUpdatedTimeVar((String) params[0]);
-                    }
-                });
-
-        //Traverse Dedup
-        graph.actionRegistry()
-                .getOrCreateDeclaration(MLPActionNames.TRAVERSE_DEDUP)
-                .setParams(Type.STRING, Type.STRING_ARRAY)
-                .setDescription("action that traverse but only put one occurence of each node")
-                .setFactory(new ActionFactory() {
-                    public Action create(Object[] params) {
-                        final String[] varargs = (String[]) params[2];
-                        if (varargs != null) {
-                            return MyLittleActions.traverseDedup((String) params[0], varargs);
-                        } else {
-                            return MyLittleActions.traverseDedup((String) params[0]);
-                        }
                     }
                 });
 
